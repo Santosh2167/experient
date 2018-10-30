@@ -37,8 +37,8 @@
   </div>
 
   <div class="field">
-    <%= f.label "I am a supplier" %> <br />
-    <%= f.check_box :isSupplier? %> <br />
+    <%= f.label "Class" %> <br />
+    <%= f.select :is_supplier, [["I am a user", false],["I am a supplier", true]]%> <br />
   </div>
 
   <div class="field">
