@@ -16,7 +16,7 @@
   </thead>
 
   <tbody>
-    <% @businesses.each do |business| %>
+    <% @my_businesses.each do |business| %>
       <tr>
         <td><%= business.trading_name %></td>
         <td><%= business.registered_business_name %></td>
@@ -35,3 +35,4 @@
 <br>
 
 <%= link_to 'New Business', new_business_path %>
+<%= link_to 'Home', root_path %>
