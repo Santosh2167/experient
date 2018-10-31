@@ -1,6 +1,6 @@
 class BusinessesController < ApplicationController
   before_action :set_business, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /businesses
   # GET /businesses.json
   def index
@@ -24,7 +24,9 @@ class BusinessesController < ApplicationController
   # POST /businesses
   # POST /businesses.json
   def create
+    # params[:user_id] = current_user.id
     @business = Business.new(business_params)
+    @business.user_id = current_user.id
 
     respond_to do |format|
       if @business.save
@@ -69,6 +71,6 @@ class BusinessesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def business_params
-      params.require(:business).permit(:trading_name, :registered_business_name, :business_address, :post_code, :abn, :phone_number)
+      params.require(:business).permit(:trading_name, :registered_business_name, :business_address, :post_code, :abn, :phone_number, :user_id)
     end
 end
