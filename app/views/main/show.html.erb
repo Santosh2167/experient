@@ -1,7 +1,8 @@
 <%= current_user.first_name%>
 <%=  "#{@hasavatar}" %>
-
+<% if current_user.avatar.present?%>
 <%= image_tag current_user.avatar_url%>
+<% end %>
 <%= form_with url: profile_path, local: true do |f| %>
     <%= f.label "Upload Avatar"%>
     <%= f.file_field :avatar%>
