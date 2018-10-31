@@ -14,6 +14,7 @@ class MainController < ApplicationController
     def update
         current_user.avatar = params[:avatar]
         current_user.save
+        redirect_to profile_path
     end
 
     # def save_avatar
