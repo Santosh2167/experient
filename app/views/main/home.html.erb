@@ -4,6 +4,9 @@
     <p> Welcome <%= current_user.first_name%> </p>
     <%= link_to "Sign out", destroy_user_session_path, method: :delete%>
     <%= link_to "View profile", profile_path%>
+    <% if current_user.is_supplier == true %>
+        <%= link_to "View Businesses", businesses_path%>
+    <% end %>
 </div>
 
 
