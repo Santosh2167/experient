@@ -10,10 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_29_044101) do
+
+ActiveRecord::Schema.define(version: 2018_10_31_034331) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "businesses", force: :cascade do |t|
+    t.string "trading_name"
+    t.string "registered_business_name"
+    t.string "business_address"
+    t.integer "post_code"
+    t.integer "abn"
+    t.integer "phone_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_businesses_on_user_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.decimal "cost"
+    t.string "location"
+    t.text "description"
+    t.boolean "active"
+    t.string "category"
+    t.text "keywords"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_products_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,10 +56,16 @@ ActiveRecord::Schema.define(version: 2018_10_29_044101) do
     t.string "last_name"
     t.date "date_of_birth"
     t.integer "post_code"
-    t.boolean "isSupplier?"
-    t.text "avatar"
+    t.boolean "is_supplier"
+    t.string "avatar"
+    t.string "provider"
+    t.string "uid"
+    t.string "name"
+    t.text "image"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "businesses", "users"
+  add_foreign_key "products", "users"
 end

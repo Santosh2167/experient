@@ -1,8 +1,23 @@
 <h1>We are in our home page</h1>
+<% if current_user%>
+<div>
+    <p> Welcome <%= current_user.first_name%> </p>
+    <%= link_to "Sign out", destroy_user_session_path, method: :delete%>
+    <%= link_to "View profile", profile_path%>
+    <% if current_user.is_supplier == true %>
+        <%= link_to "View Businesses", businesses_path%>
+        <%= link_to "New Product", new_business_product_path(business_id: @business.id)%> 
+        <%= link_to "View Products", business_products_path(business_id: @business.id)%>
+    <% end %>
+</div>
 
+
+<% else %>
 <div class="sign_in">
     <%=link_to "Sign in", new_user_session_path%>
     <%=link_to "Sign up", new_user_registration_path%>
 </div>
+
+<% end %>
 
 <p> Test <p>
