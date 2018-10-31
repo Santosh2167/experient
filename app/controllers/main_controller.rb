@@ -1,5 +1,10 @@
 class MainController < ApplicationController 
+    before_action :authenticate_user!
     def main
+    end
+
+    def home
+        @business = current_user.business
     end
 
     def show

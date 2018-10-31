@@ -5,4 +5,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   # has_many :interests, as: :categorable
+
+  has_one :business
 end

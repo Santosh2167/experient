@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2018_10_31_024635) do
-=======
-ActiveRecord::Schema.define(version: 2018_10_31_015049) do
->>>>>>> 90be5a24be28b23e781ada0e8d922cb2fb5d77f3
+ActiveRecord::Schema.define(version: 2018_10_31_034331) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +26,20 @@ ActiveRecord::Schema.define(version: 2018_10_31_015049) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.index ["user_id"], name: "index_businesses_on_user_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.decimal "cost"
+    t.string "location"
+    t.text "description"
+    t.boolean "active"
+    t.string "category"
+    t.text "keywords"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_products_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -51,4 +61,5 @@ ActiveRecord::Schema.define(version: 2018_10_31_015049) do
   end
 
   add_foreign_key "businesses", "users"
+  add_foreign_key "products", "users"
 end
