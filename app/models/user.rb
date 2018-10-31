@@ -7,4 +7,5 @@ class User < ApplicationRecord
   # has_many :interests, as: :categorable
 
   has_one :business
+
 end
