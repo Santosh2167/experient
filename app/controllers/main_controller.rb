@@ -3,8 +3,6 @@ class MainController < ApplicationController
     end
 
     def show
-        @user = current_user.id
-
         if current_user.avatar == nil
             @hasavatar = "You do not have an avatar"
         else
