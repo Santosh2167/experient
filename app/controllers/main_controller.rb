@@ -3,6 +3,7 @@ class MainController < ApplicationController
     end
 
     def show
+        @test = User.find_by(id:current_user.id).avatar
         if current_user.avatar.length > 1
             @hasavatar = "You have an avatar"
         else
