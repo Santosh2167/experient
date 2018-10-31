@@ -4,7 +4,7 @@ class RegistrationsController < Devise::RegistrationsController
   def after_sign_up_path_for(resource)
     #  destroy_user_session_path, method: :delete
     # "https://www.google.com.au"
-    new_supplier_registration_path
+    new_business_path
   end
 
   def new_supplier
