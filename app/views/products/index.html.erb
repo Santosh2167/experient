@@ -1,8 +1,14 @@
 <p id="notice"><%= notice %></p>
+<% if user_signed_in? %>
+<%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+<% else%>
 <%= link_to 'Sign In', new_user_session_path %>
 <%= link_to 'Sign Up', new_user_registration_path%>
+<%end%>
 
 <%=render "partials/product_search"%>
+
+
 
 <h1>Products</h1>
 
@@ -24,7 +30,7 @@
   <tbody>
     <% @products.each do |product| %>
       <tr>
-        <td><%= product.name %></td>
+        <td><%= link_to product.name, business_product_path(business_id: product.user.id, id: product.id)  %></td>
         <td><%= product.cost %></td>
         <td><%= product.location %></td>
         <td><%= product.description %></td>
@@ -41,4 +47,3 @@
 <br>
 
 <%# <%= link_to 'New Product', new_business_product_path %>
-<%= link_to 'Home', root_path %>
