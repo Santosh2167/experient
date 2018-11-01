@@ -1,6 +1,8 @@
 class MainController < ApplicationController 
     before_action :authenticate_user!
     def main
+        @product = Product.all
+        render json: @product
     end
 
     def home

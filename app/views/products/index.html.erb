@@ -1,4 +1,6 @@
 <p id="notice"><%= notice %></p>
+<%= link_to 'Sign In', new_user_session_path %>
+<%= link_to 'Sign Up', new_user_registration_path%>
 
 <h1>Products</h1>
 
@@ -18,7 +20,7 @@
   </thead>
 
   <tbody>
-    <% @my_products.each do |product| %>
+    <% @products.each do |product| %>
       <tr>
         <td><%= product.name %></td>
         <td><%= product.cost %></td>
@@ -27,9 +29,7 @@
         <td><%= product.active %></td>
         <td><%= product.category %></td>
         <td><%= product.keywords %></td>
-        <td><%= link_to 'Show', business_product_path(id: product.id) %></td>
-        <td><%= link_to 'Edit', edit_business_product_path(id: product.id) %></td>
-        <td><%= link_to 'Destroy', business_product_path(id: product.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    
       </tr>
     <% end %>
   </tbody>
@@ -37,5 +37,5 @@
 
 <br>
 
-<%= link_to 'New Product', new_business_product_path %>
+<%# <%= link_to 'New Product', new_business_product_path %>
 <%= link_to 'Home', root_path %>
