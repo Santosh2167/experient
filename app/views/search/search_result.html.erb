@@ -1,27 +1,17 @@
-<h1>This page displays Search result</h1>
-<table>
-<thead>
-    <tr>
-      <th>Name</th>
-      <th>Cost</th>
-      <th>Location</th>
-      <th>Description</th>
-      <th>Category</th>
-      <th>Keywords</th>
-      <th> colspan="3"></th>
-    </tr>
-  </thead>
-    <tbody>
-        <% @products.each do |product| %>
-        <tr>
-            <td><%= product.name %></td>
-            <td><%= product.cost %></td>
-            <td><%= product.location %></td>
-            <td><%= product.description %></td>
-            <td><%= product.category %></td>
-            <td><%= product.keywords %></td>
-        </tr>
-        <% end %>
-    </tbody>
-</table>
+<h3>This page displays Search result</h3>
 
+    <% @products.each do |product| %>
+      
+        <h3>Title: <%= link_to product.name, business_product_path(business_id: product.user.id, id: product.id)  %></h3>
+        <div>Price: $<%= product.cost %></div>
+        <div>Location: <%= product.location %></div>
+        <div>isActive?: <%= product.active %></div>
+        <div>Category: <%= product.category %></div>
+        <div>keywords: <%= product.keywords %></div>
+        <div>Description: <%= product.description %></div>
+        <div>
+          <span><%=link_to "View Detail",business_product_path(business_id: product.user.id, id: product.id)%></span>
+          <span><%=link_to "Buy Me",business_product_path(business_id: product.user.id, id: product.id)%></span>
+        </div>
+        <br>
+     <% end %>

@@ -14,6 +14,10 @@ class ProductsController < ApplicationController
   def show
   end
 
+  def buy_cc
+
+  end
+
   # GET /products/new
   def new
     @product = Product.new
