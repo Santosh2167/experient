@@ -14,6 +14,15 @@ Hi <%= current_user.first_name.capitalize%>
     <%= f.submit%>
 <% end %>
 
+<h2> Product Reviews </h2>
+<% @productreview.each do |x|%>
+    <div><%= x.product.name%></div>
+    <div> Rating: <%= x.rating %></div>
+    <div> Comment: <%= x.comment%></div>
+    <%= link_to "Edit review", edit_product_review_path(x.id)%>
+<% end %>
+
+
 
 <%= link_to "Sign out", destroy_user_session_path, method: :delete%>
 
