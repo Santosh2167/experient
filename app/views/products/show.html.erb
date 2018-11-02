@@ -37,7 +37,7 @@
 
 
 <% if current_user.is_supplier?%>
-<%= link_to 'Edit', edit_business_product_path(@product, business_id: @product.user.business.id ) %> 
+<%= link_to 'Edit', edit_business_product_path %> 
 <% end %>
 <%= link_to 'Back', profile_path %> 
 <%# <%= link_to 'Delete Item', business_product_path, method: :delete %>
