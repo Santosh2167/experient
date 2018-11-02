@@ -35,5 +35,5 @@
   <%= @product.keywords %>
 </p>
 
-<%= link_to 'Edit', edit_business_product_path(@product) %> |
+<%= link_to 'Edit', edit_business_product_path(@product, business_id: @product.user.business.id ) %> |
 <%= link_to 'Back', business_products_path %>

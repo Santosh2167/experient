@@ -9,6 +9,10 @@ class ProductsController < ApplicationController
     @my_products = Product.where(user_id: current_user)
   end
 
+  def show_my_products
+    @my_products = Product.where(user_id: current_user)
+  end
+
   # GET /products/1
   # GET /products/1.json
   def show
