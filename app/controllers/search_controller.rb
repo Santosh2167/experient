@@ -9,6 +9,7 @@ class SearchController < ApplicationController
 
     def advanced_search
         @groups = AgeGroup.pluck("range","id")
+        @category = Category.pluck("category","id")
 
     end
 

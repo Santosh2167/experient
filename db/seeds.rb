@@ -16,13 +16,13 @@ age_ranges.each do |range|
     group_ids.push group.id
 end
 
-category =["Advanture","Romance","Dining","Cake & Pastry","Film","Opera"]
+categories =["Advanture","Romance","Dining","Cake & Pastry","Film","Opera"]
 category_ids =[]
-category.each do |cat|
-    cat = Category.create (
+categories.each do |cat|
+    category = Category.create(
         category: cat
     )
-    category_ids.push cat.id
+    category_ids.push category.id
 end
 
 30.times do 
@@ -31,11 +31,12 @@ end
         cost: Faker::Number.decimal(3,2),
         description: Faker::Lorem.paragraph(2), 
         active: true,
-        category: Faker::Appliance.brand,
+        # category: Faker::Appliance.brand,
         keywords: "Advanture",
         user_id: 1,
         location: Faker::HarryPotter.location,
         age_group_id: group_ids[rand(group_ids.length)],
+        # category_id: 2,
         category_id: category_ids[rand(category_ids.length)]
     )
     

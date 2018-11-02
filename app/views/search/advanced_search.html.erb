@@ -9,11 +9,10 @@
     </div>
 
     <div class="field">
-        <%= form.label :category%>
-        <%= form.text_field :category%>
-         <%# options_for_select(@categories), :include_blank =>true %> 
+        <%= form.select :category_id,  @category %>
     </div>
 
+    
     <div class="field">
         <%= form.label  :cost, "Min Price"%> - <%= form.text_field :cost, size: 10%>
         <%= form.label  :cost, "Max Price"%> - <%= form.text_field :cost, size: 10%>
@@ -21,9 +20,11 @@
     </div>
 
     <div class="field">
-        <%= form.select :age_group_id, @groups %>
+        <%= form.select :age_group_id,  @groups %>
                  
     </div>
+
+
 
     <div class= "field">
         <%= form.label :active, "Rating:"%>
