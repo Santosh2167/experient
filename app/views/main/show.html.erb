@@ -26,6 +26,8 @@ Hi <%= current_user.first_name.capitalize%>
 
 <%= link_to "Sign out", destroy_user_session_path, method: :delete%>
 
+
+<% if current_user.is_supplier == true %>
 <h2>Business Information</h2>
 
 <% @my_businesses.each do |business| %>
@@ -62,9 +64,9 @@ Hi <%= current_user.first_name.capitalize%>
     <%= link_to 'Show', business %>
     <%= link_to 'Edit', edit_business_path(business) %>
     <%= link_to 'Destroy', business, method: :delete, data: { confirm: 'Are you sure?' } %>
-<% end %>
+
 <br>
-<% if current_user.is_supplier == true %>
+
         <%= link_to "New Product", new_business_product_path(business_id: @business.id)%> 
         <%= link_to "History", history_path(business_id: @business.id)%>
 <% end %>
@@ -87,4 +89,4 @@ Hi <%= current_user.first_name.capitalize%>
         <br>
         <% end %>
       <% end %> 
-  
+<% end %>  
