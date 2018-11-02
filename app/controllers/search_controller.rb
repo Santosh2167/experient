@@ -7,6 +7,11 @@ class SearchController < ApplicationController
         @products = Product.search(params[:search])
     end
 
+    def advanced_search
+        @groups = AgeGroup.pluck("range","id")
+
+    end
+
     
 
 

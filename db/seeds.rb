@@ -6,6 +6,17 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+age_ranges = ["0-99","10-20","21-30","31-40","41-50","50+"]
+group_ids = []
+
+age_ranges.each do |range|
+    group = AgeGroup.create(
+        range: range
+    )
+    group_ids.push group.id
+end
+
+
 30.times do 
     Product.create(
         name: Faker::Appliance.equipment,
@@ -15,7 +26,8 @@
         category: Faker::Appliance.brand,
         keywords: "Advanture",
         user_id: 1,
-        location: Faker::HarryPotter.location
+        location: Faker::HarryPotter.location,
+        age_group_id: group_ids[rand(group_ids.length)]
     )
     
 end

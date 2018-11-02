@@ -1,5 +1,7 @@
 class Product < ApplicationRecord
   belongs_to :user
+  belongs_to :age_group
+  
 
   def self.search(search)
     if search && search!=""
