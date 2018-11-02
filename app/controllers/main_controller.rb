@@ -16,7 +16,12 @@ class MainController < ApplicationController
         else
             @hasavatar = "You do not have an avatar"
         end
+
+        @my_businesses = Business.where(user_id: current_user)
+        @business = current_user.business
+        @my_products = Product.where(user_id: current_user)
         @productreview = current_user.product_reviews
+
     end
 
     def update

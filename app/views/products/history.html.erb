@@ -1,22 +1,6 @@
-<p id="notice"><%= notice %></p>
-<% if user_signed_in? %>
-<%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-<% else%>
-<%= link_to 'Sign In', new_user_session_path %>
-<%= link_to 'Sign Up', new_user_registration_path%>
-<%end%>
-<%= link_to "View profile", profile_path%>
-
-<%=render "partials/product_search"%>
-
-
-
-<h1>Products</h1>
-
-
-
+<h1>History</h1>
   
-    <% @products.each do |product| %>
+    <% @my_products.each do |product| if product.active? == false %>
       
         <h3>Title: <%= link_to product.name, business_product_path(business_id: product.user.id, id: product.id)  %></h3>
         <div>Price: $<%= product.cost %></div>
@@ -30,8 +14,5 @@
           <span><%=link_to "Buy Me",business_product_path(business_id: product.user.id, id: product.id)%></span>
         </div>
         <br>
+      <% end %>
      <% end %>
-
-<br>
-
-<%# <%= link_to 'New Product', new_business_product_path %>
