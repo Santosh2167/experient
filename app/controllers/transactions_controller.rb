@@ -1,10 +1,12 @@
 class TransactionsController < ApplicationController
-before_action :authenicate_user!
+before_action :authenticate_user!
+before_action :add_params
     def new
-        @transaction = Transaction.new
+        # @product = Product.find(params[:product_id])
+        @transaction = Transaction.create(params[:id])
     end
 
-    def create
-        @transaction.user_id = current_user.user_id
+    def add_params
+        params.require().permit(:amount, :product_id, :user_id)
     end
 end
