@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
   belongs_to :user
+  has_many :product_reviews
 
   def self.search(search)
     if search && search!=""

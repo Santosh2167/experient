@@ -10,12 +10,13 @@ class MainController < ApplicationController
     end
 
     def show
-        @test = User.find_by(id:current_user.id).avatar
+        # @test = User.find_by(id:current_user.id).avatar
         if current_user.avatar.length > 1
             @hasavatar = "You have an avatar"
         else
             @hasavatar = "You do not have an avatar"
         end
+        @productreview = current_user.product_reviews
     end
 
     def update
