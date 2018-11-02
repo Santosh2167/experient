@@ -16,6 +16,14 @@ age_ranges.each do |range|
     group_ids.push group.id
 end
 
+category =["Advanture","Romance","Dining","Cake & Pastry","Film","Opera"]
+category_ids =[]
+category.each do |cat|
+    cat = Category.create (
+        category: cat
+    )
+    category_ids.push cat.id
+end
 
 30.times do 
     Product.create(
@@ -27,7 +35,8 @@ end
         keywords: "Advanture",
         user_id: 1,
         location: Faker::HarryPotter.location,
-        age_group_id: group_ids[rand(group_ids.length)]
+        age_group_id: group_ids[rand(group_ids.length)],
+        category_id: category_ids[rand(category_ids.length)]
     )
     
 end

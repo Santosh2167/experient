@@ -1,6 +1,7 @@
 class Product < ApplicationRecord
   belongs_to :user
   belongs_to :age_group
+  belongs_to :category
   
 
   def self.search(search)
