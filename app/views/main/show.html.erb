@@ -57,7 +57,7 @@ Hi <%= current_user.first_name.capitalize%>
 <br>
 <% if current_user.is_supplier == true %>
         <%= link_to "New Product", new_business_product_path(business_id: @business.id)%> 
-        <%= link_to "View My Products", show_my_products_path(business_id: @business.id)%>
+        <%= link_to "History", history_path(business_id: @business.id)%>
 <% end %>
 
 <h1>My Active Products</h1>
@@ -79,21 +79,3 @@ Hi <%= current_user.first_name.capitalize%>
         <% end %>
       <% end %> 
   
-  <h1>My Inactive Products</h1>
-  
-    <% @my_products.each do |product| if product.active? == false %>
-      
-        <h3>Title: <%= link_to product.name, business_product_path(business_id: product.user.id, id: product.id)  %></h3>
-        <div>Price: $<%= product.cost %></div>
-        <div>Location: <%= product.location %></div>
-        <div>isActive?: <%= product.active %></div>
-        <div>Category: <%= product.category %></div>
-        <div>keywords: <%= product.keywords %></div>
-        <div>Description: <%= product.description %></div>
-        <div>
-          <span><%=link_to "View Detail",business_product_path(business_id: product.user.id, id: product.id)%></span>
-          <span><%=link_to "Buy Me",business_product_path(business_id: product.user.id, id: product.id)%></span>
-        </div>
-        <br>
-        <% end %>
-      <% end %> 

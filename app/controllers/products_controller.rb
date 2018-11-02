@@ -9,8 +9,16 @@ class ProductsController < ApplicationController
     @my_products = Product.where(user_id: current_user)
   end
 
-  def show_my_products
+  def history
     @my_products = Product.where(user_id: current_user)
+  end
+
+  def inactive_button
+    @product = Product.find(params[:id])
+    @product.active = !@product.active
+    @product.save
+
+    redirect_to profile_path
   end
 
   # GET /products/1
@@ -71,7 +79,7 @@ class ProductsController < ApplicationController
   def destroy
     @product.destroy
     respond_to do |format|
-      format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
+      format.html { redirect_to profile_path, notice: 'Product was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

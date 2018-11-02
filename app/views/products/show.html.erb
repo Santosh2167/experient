@@ -36,4 +36,8 @@
 </p>
 
 <%= link_to 'Edit', edit_business_product_path(@product, business_id: @product.user.business.id ) %> |
-<%= link_to 'Back', business_products_path %>
+<%= link_to 'Back', profile_path %> 
+<%# <%= link_to 'Delete Item', business_product_path, method: :delete %>
+<% if @product.user_id == current_user.id %>
+| <%= link_to 'Make Product Inactive', inactive_business_product_path, method: :put %>
+<% end %>

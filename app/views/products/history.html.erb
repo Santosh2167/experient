@@ -1,6 +1,6 @@
-<h1>My Products</h1>
+<h1>History</h1>
   
-    <% @my_products.each do |product| %>
+    <% @my_products.each do |product| if product.active? == false %>
       
         <h3>Title: <%= link_to product.name, business_product_path(business_id: product.user.id, id: product.id)  %></h3>
         <div>Price: $<%= product.cost %></div>
@@ -14,4 +14,5 @@
           <span><%=link_to "Buy Me",business_product_path(business_id: product.user.id, id: product.id)%></span>
         </div>
         <br>
+      <% end %>
      <% end %>
