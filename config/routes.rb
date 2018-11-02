@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :product_reviews
   root "products#index"
   get "search/search_result", to:"search#search_result", as: "search_result"
   get "products/:id", to:"products#show", as: "product_show"
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
 
   get 'profile', to: 'main#show'
   post 'profile', to: 'main#update'
+
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
