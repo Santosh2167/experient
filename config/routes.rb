@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   get 'profile', to: 'main#show'
   post 'profile', to: 'main#update'
 
-  
+  get 'buy', to: 'transactions#new'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 end
