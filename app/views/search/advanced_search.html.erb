@@ -1,22 +1,23 @@
 <h1> you are in advance search</h1>
 <p>View>search>advanced_search.html.erb</p>
+<%# 
+<%= text_field_tag :search, params[:search]%> 
 
-
-<%= form_with model: @search,local:true do |form|%>
+<%= form_with url: advanced_search_path,local:true do |form|%>
     <div class="field">
-        <%= form.label :keywords%>
+        <%= form.label "Keywords"%>
         <%= form.text_field :keywords%>
     </div>
 
     <div class="field">
+        <%= form.label "Category"%>
         <%= form.select :category_id,  @category %>
     </div>
 
     
     <div class="field">
-        <%= form.label  :cost, "Min Price"%> - <%= form.text_field :cost, size: 10%>
-        <%= form.label  :cost, "Max Price"%> - <%= form.text_field :cost, size: 10%>
-        <%= form.text_field :keywords%>
+        <%= form.label  :min_cost, "Min Price"%> - <%= form.text_field :max_cost, size: 10%>
+        <%= form.label  :max_cost, "Max Price"%> - <%= form.text_field :max_cost, size: 10%>
     </div>
 
     <div class="field">
@@ -31,7 +32,7 @@
     </div>
 
     <div class="action">
-        <%=form.submit "Search",class:"pure-button pure-button-primary"%>
+        <%=form.submit "Search" %>
     </div>
 
 <%end%>

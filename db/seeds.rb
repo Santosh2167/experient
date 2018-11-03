@@ -6,6 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+user = User.create(
+    email: "santosh.poudyal@gmail.com",
+    password:"123456"
+
+)
+
 age_ranges = ["0-99","10-20","21-30","31-40","41-50","50+"]
 group_ids = []
 
@@ -25,19 +31,21 @@ categories.each do |cat|
     category_ids.push category.id
 end
 
+Keywords = ["Family dining Bar Beer", "Chicken Scenic Ocean","Family Chicken Beer","BBQ Bar", "Scenic BBQ"]
+
 30.times do 
     Product.create(
         name: Faker::Appliance.equipment,
         cost: Faker::Number.decimal(3,2),
         description: Faker::Lorem.paragraph(2), 
         active: true,
-        # category: Faker::Appliance.brand,
-        keywords: "Advanture",
+        # category: categories[rand(categories.length)],
+        keywords: Faker::Lorem.sentence,
         user_id: 1,
         location: Faker::HarryPotter.location,
         age_group_id: group_ids[rand(group_ids.length)],
-        # category_id: 2,
-        category_id: category_ids[rand(category_ids.length)]
+        category_id: category_ids[rand(category_ids.length)],
+        # category_id: category_ids[rand(category_ids.length)]
     )
     
 end
