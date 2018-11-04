@@ -18,6 +18,13 @@ Hi <%= current_user.first_name.capitalize%>
   <div>
     <%= f.submit%>
   </div>
+  <div>
+    <%= link_to "Edit profile", edit_user_registration_path(current_user)%>
+  </div>
+<% end %>
+<h2> Purchases </h2>
+<% @my_products.each do |p| %>
+<%= p.name %>
 <% end %>
 
 <h2> Product Reviews </h2>
