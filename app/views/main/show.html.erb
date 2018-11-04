@@ -24,8 +24,8 @@ Hi <%= current_user.first_name.capitalize%>
 
 
 
-<%= link_to "Sign out", destroy_user_session_path, method: :delete%>
-
+<%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+<%= link_to "Home", root_path %>
 
 <% if current_user.is_supplier == true %>
 <h2>Business Information</h2>
@@ -63,7 +63,7 @@ Hi <%= current_user.first_name.capitalize%>
 
     <%= link_to 'Show', business %>
     <%= link_to 'Edit', edit_business_path(business) %>
-    <%= link_to 'Destroy', business, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%# <%= link_to 'Destroy', business, method: :delete, data: { confirm: 'Are you sure?' } %>
 
 <br>
 
@@ -85,6 +85,11 @@ Hi <%= current_user.first_name.capitalize%>
         <div>
           <span><%=link_to "View Detail",business_product_path(business_id: product.user.id, id: product.id)%></span>
           <span><%=link_to "Buy Me",business_product_path(business_id: product.user.id, id: product.id)%></span>
+          <% if product.active? == true %>
+          <span><%= link_to 'Make Product Inactive', inactive_business_product_path(business_id: product.user.id, id: product.id), method: :put %></span>
+          <% else %>
+          <span><%= link_to 'Make Product Active', inactive_business_product_path(business_id: product.user.id, id: product.id), method: :put %></span>
+          <% end %>
         </div>
         <br>
         <% end %>

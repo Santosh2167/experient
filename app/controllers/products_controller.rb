@@ -39,8 +39,7 @@ class ProductsController < ApplicationController
 
   # GET /products/1/edit
   def edit
-    @product = Product.new
-    @business = Business.find(params[:business_id])
+    @business = User.find(params[:business_id]).business
   end
 
   # POST /products
@@ -51,7 +50,7 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to business_products_path, notice: 'Product was successfully created.' }
+        format.html { redirect_to profile_path, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
         format.html { render :new }

@@ -12,6 +12,11 @@
         <div>
           <span><%=link_to "View Detail",business_product_path(business_id: product.user.id, id: product.id)%></span>
           <span><%=link_to "Buy Me",business_product_path(business_id: product.user.id, id: product.id)%></span>
+          <% if product.active? == true %>
+          <span><%= link_to 'Make Product Inactive', inactive_business_product_path(business_id: product.user.id, id: product.id), method: :put %></span>
+          <% else %>
+          <span><%= link_to 'Make Product Active', inactive_business_product_path(business_id: product.user.id, id: product.id), method: :put %></span>
+          <% end %>
         </div>
         <br>
       <% end %>
