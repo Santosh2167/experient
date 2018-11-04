@@ -33,22 +33,51 @@ end
 
 Keywords = ["Family dining Bar Beer", "Chicken Scenic Ocean","Family Chicken Beer","BBQ Bar", "Scenic BBQ"]
 
+User.create(
+    first_name: "Blake",
+    last_name: "Doyle",
+    date_of_birth: "02/11/1993",
+    email: "blake@blake",
+    password: "password",
+    password_confirmation: "password",
+    post_code: 2019
+)
+User.create(
+    first_name: "Santosh",
+    last_name: "Poudyal",
+    date_of_birth: "02/11/1993",
+    email: "santosh@santosh",
+    password: "password",
+    password_confirmation: "password",
+    post_code: 2019,
+    is_supplier: true
+)
+User.create(
+    first_name: "Tyson",
+    last_name: "Hofstetter",
+    date_of_birth: "02/11/1993",
+    email: "tyson@tyson",
+    password: "password",
+    password_confirmation: "password",
+    post_code: 2019
+)
+
 30.times do 
     Product.create(
         name: Faker::Appliance.equipment,
         cost: Faker::Number.decimal(3,2),
         description: Faker::Lorem.paragraph(2), 
         active: true,
-        # category: categories[rand(categories.length)],
         keywords: Faker::Lorem.sentence,
+        category: Faker::Appliance.brand,
+        keywords: "Adventure",
         user_id: 1,
         location: Faker::HarryPotter.location,
         age_group_id: group_ids[rand(group_ids.length)],
         category_id: category_ids[rand(category_ids.length)],
-        # category_id: category_ids[rand(category_ids.length)]
     )
-    
 end
+
 
 
    

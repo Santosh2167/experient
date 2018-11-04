@@ -9,6 +9,18 @@ class ProductsController < ApplicationController
     @my_products = Product.where(user_id: current_user)
   end
 
+  def history
+    @my_products = Product.where(user_id: current_user)
+  end
+
+  def inactive_button
+    @product = Product.find(params[:id])
+    @product.active = !@product.active
+    @product.save
+
+    redirect_to profile_path
+  end
+
   # GET /products/1
   # GET /products/1.json
   def show
@@ -29,8 +41,7 @@ class ProductsController < ApplicationController
 
   # GET /products/1/edit
   def edit
-    @product = Product.new
-    @business = Business.find(params[:business_id])
+    @business = User.find(params[:business_id]).business
   end
 
   # POST /products
@@ -41,7 +52,7 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to business_products_path, notice: 'Product was successfully created.' }
+        format.html { redirect_to profile_path, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
         format.html { render :new }
@@ -69,7 +80,7 @@ class ProductsController < ApplicationController
   def destroy
     @product.destroy
     respond_to do |format|
-      format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
+      format.html { redirect_to profile_path, notice: 'Product was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -82,6 +93,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :cost, :location, :description, :active, :category, :keywords, :user_id)
+      params.require(:product).permit(:name, :cost, :location, :description, :active, :category, :keywords, :user_id, :image)
     end
 end

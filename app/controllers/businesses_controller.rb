@@ -57,9 +57,12 @@ class BusinessesController < ApplicationController
   # DELETE /businesses/1
   # DELETE /businesses/1.json
   def destroy
-    @business.destroy
+    @business.delete_all
+    @supplier = User.find(current_user.id)
+    @supplier.is_supplier = false
+    @supplier.save
     respond_to do |format|
-      format.html { redirect_to businesses_url, notice: 'Business was successfully destroyed.' }
+      format.html { redirect_to profile_path, notice: 'Business was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

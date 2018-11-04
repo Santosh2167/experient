@@ -72,3 +72,11 @@ gem "mini_magick", "~> 4.9"
 gem "omniauth-facebook", "~> 5.0"
 
 gem "faker", "~> 1.9"
+
+gem 'bootstrap', '~> 4.0.0'
+
+gem 'jquery-rails'
+
+gem "better_errors", "~> 2.5"
+
+gem "binding_of_caller", "~> 0.8.0"
