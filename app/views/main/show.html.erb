@@ -89,7 +89,6 @@ Hi <%= current_user.first_name.capitalize%>
     <% @my_products.each do |product| if product.active? %>
       
         <h3>Title: <%= link_to product.name, business_product_path(business_id: product.user.id, id: product.id)  %></h3>
-        <div><%= image_tag product.image_url%>
         <div>Price: $<%= product.cost %></div>
         <div>Location: <%= product.location %></div>
         <div>isActive?: <%= product.active %></div>
