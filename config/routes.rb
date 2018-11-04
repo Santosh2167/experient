@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   get "products/:id", to:"products#show", as: "product_show"
   get "search/advanced_search",to: "search#advanced_search", as:"advanced_search"
   post "search/advanced_search", to: "search#advanced_search_process"
-  # get "movies/new", to: "movies#new", as: 'new_movie'
+
+  # get "products/buy_product", to: "products#buy_product", as: "buy_product"
+  
   resources :businesses do
     resources :products
   end
