@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   end
   devise_for :users, controllers:  { registrations: 'registrations' }
  
-  root "products#index"
+  root "main#home"
 
   get 'profile', to: 'main#show'
   post 'profile', to: 'main#update'
