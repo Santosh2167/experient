@@ -9,9 +9,15 @@ Hi <%= current_user.first_name.capitalize%>
     <% @hasavatar = "Upload Avatar"%>
 <% end %>
 <%= form_with url: profile_path, local: true do |f| %>
+  <div>
     <%= f.label "#{@hasavatar}"%>
+  </div>
+  <div>
     <%= f.file_field :avatar%>
+  </div>
+  <div>
     <%= f.submit%>
+  </div>
 <% end %>
 
 <h2> Product Reviews </h2>
