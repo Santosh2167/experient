@@ -73,6 +73,9 @@ gem "omniauth-facebook", "~> 5.0"
 
 gem "faker", "~> 1.9"
 
+
+gem "stripe", "~> 3.29"
+
 gem 'bootstrap', '~> 4.0.0'
 
 gem 'jquery-rails'
@@ -80,3 +83,4 @@ gem 'jquery-rails'
 gem "better_errors", "~> 2.5"
 
 gem "binding_of_caller", "~> 0.8.0"
+

@@ -23,11 +23,11 @@ class SearchController < ApplicationController
         #                     "%#{params[:cost] if params[:cost].present?}%"
         #                 ])
         # byebug
-        # query = Product.all   
+        query = Product.all   
         query = Product.where("keywords ILIKE ?","%#{params[:keywords]}%")
             .where(category_id: params[:category_id].to_i)
-            # .where("cost >= ?",params[:min_cost].to_f)
-            # .where("cost <= ?",params[:max_cost].to_f)
+            .where("cost >= ?",params[:min_cost].to_f)
+            .where("cost <= ?",params[:max_cost].to_f)
         
         
 
