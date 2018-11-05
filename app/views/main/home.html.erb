@@ -39,7 +39,7 @@
     $<%= x.cost%>
 </div>
 <span><%=link_to "View Detail",business_product_path(business_id: x.user.id, id: x.id)%></span>
-<span><%=link_to "Buy Me",buy_path(product_id: x.id)%></span>
+<span><%=link_to "Buy Me",business_product_path(business_id: x.user.id, id: x.id)%></span>
 </div>
 <br>
 <% end %>
