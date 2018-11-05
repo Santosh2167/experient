@@ -1,12 +1,12 @@
 class MainController < ApplicationController 
-    before_action :authenticate_user!
+    # before_action :authenticate_user!
     def main
         @product = Product.all
         render json: @product
     end
 
     def home
-        @business = current_user.business
+        # @business = current_user.business
     end
 
     def show
