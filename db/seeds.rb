@@ -69,7 +69,7 @@ User.create(
         description: Faker::Lorem.paragraph(2), 
         active: true,
         keywords: Faker::Lorem.sentence,
-        image: "https://dummyimage.com/500x500/000/fff.png",
+        image: File.open(Rails.root + "app/assets/images/default.jpg"),
         # category: Faker::Appliance.brand,
         # keywords: "Adventure",
         user_id: 1,
