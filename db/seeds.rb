@@ -6,12 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-user = User.create(
-    email: "santosh.poudyal@gmail.com",
-    password:"123456"
-
-)
-
 age_ranges = ["0-99","10-20","21-30","31-40","41-50","50+"]
 group_ids = []
 
