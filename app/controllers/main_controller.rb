@@ -7,6 +7,7 @@ class MainController < ApplicationController
 
     def home
         # @business = current_user.business
+        @featured = Product.where(id: Product.pluck(:id).sample(3))
     end
 
     def show
