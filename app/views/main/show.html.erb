@@ -9,13 +9,102 @@ Hi <%= current_user.first_name.capitalize%>
     <% @hasavatar = "Upload Avatar"%>
 <% end %>
 <%= form_with url: profile_path, local: true do |f| %>
+  <div>
     <%= f.label "#{@hasavatar}"%>
+  </div>
+  <div>
     <%= f.file_field :avatar%>
+  </div>
+  <div>
     <%= f.submit%>
+  </div>
+  <div>
+    <%= link_to "Edit profile", edit_user_registration_path(current_user)%>
+  </div>
+<% end %>
+<h2> Purchases </h2>
+<% @my_products.each do |p| %>
+<%= p.name %>
+<% end %>
+
+<h2> Product Reviews </h2>
+<% @productreview.each do |x|%>
+    <div><%= x.product.name%></div>
+    <div> Rating: <%= x.rating %></div>
+    <div> Comment: <%= x.comment%></div>
+    <%= link_to "Edit review", edit_product_review_path(x.id)%>
 <% end %>
 
 
-<%= link_to "Sign out", destroy_user_session_path, method: :delete%>
 
-   
+<%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+<%= link_to "Home", root_path %>
 
+<% if current_user.is_supplier == true %>
+<h2>Business Information</h2>
+
+<% @my_businesses.each do |business| %>
+<p>
+  <strong>Trading name:</strong>
+  <%= business.trading_name %>
+</p>
+
+<p>
+  <strong>Registered business name:</strong>
+  <%= business.registered_business_name %>
+</p>
+
+<p>
+  <strong>Business address:</strong>
+  <%= business.business_address %>
+</p>
+
+<p>
+  <strong>Post code:</strong>
+  <%= business.post_code %>
+</p>
+
+<p>
+  <strong>Abn:</strong>
+  <%= business.abn %>
+</p>
+
+<p>
+  <strong>Phone number:</strong>
+  <%= business.phone_number %>
+</p>
+
+    <%= link_to 'Show', business %>
+    <%= link_to 'Edit', edit_business_path(business) %>
+    <%# <%= link_to 'Destroy', business, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+<br>
+
+        <%= link_to "New Product", new_business_product_path(business_id: @business.id)%> 
+        <%= link_to "History", history_path(business_id: @business.id)%>
+<% end %>
+
+<h1>My Active Products</h1>
+  
+    <% @my_products.each do |product| if product.active? %>
+      
+        <h3>Title: <%= link_to product.name, business_product_path(business_id: product.user.id, id: product.id)  %></h3>
+        <div>Price: $<%= product.cost %></div>
+        <div>Location: <%= product.location %></div>
+        <div>isActive?: <%= product.active %></div>
+        <div>Category: <%= product.category %></div>
+        <div>keywords: <%= product.keywords %></div>
+        <div>Description: <%= product.description %></div>
+        <div>
+          <span><%=link_to "View Detail",business_product_path(business_id: product.user.id, id: product.id)%></span>
+          <span><%=link_to "Buy Me",business_product_path(business_id: product.user.id, id: product.id)%></span>
+          <% if product.active? == true %>
+          <span><%= link_to 'Make Product Inactive', inactive_business_product_path(business_id: product.user.id, id: product.id), method: :put %></span>
+          <% else %>
+          <span><%= link_to 'Make Product Active', inactive_business_product_path(business_id: product.user.id, id: product.id), method: :put %></span>
+          <% end %>
+        </div>
+        <br>
+        <% end %>
+      <% end %> 
+<% end %>  
