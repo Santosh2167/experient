@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_02_005508) do
+ActiveRecord::Schema.define(version: 2018_11_04_225548) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,17 @@ ActiveRecord::Schema.define(version: 2018_11_02_005508) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "product_reviews", force: :cascade do |t|
+    t.integer "rating"
+    t.text "comment"
+    t.bigint "user_id"
+    t.bigint "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_product_reviews_on_product_id"
+    t.index ["user_id"], name: "index_product_reviews_on_user_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.decimal "cost"
@@ -51,11 +62,22 @@ ActiveRecord::Schema.define(version: 2018_11_02_005508) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
     t.bigint "age_group_id"
     t.bigint "category_id"
     t.index ["age_group_id"], name: "index_products_on_age_group_id"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["user_id"], name: "index_products_on_user_id"
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.decimal "amount"
+    t.bigint "product_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_transactions_on_product_id"
+    t.index ["user_id"], name: "index_transactions_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -81,7 +103,11 @@ ActiveRecord::Schema.define(version: 2018_11_02_005508) do
   end
 
   add_foreign_key "businesses", "users"
+  add_foreign_key "product_reviews", "products"
+  add_foreign_key "product_reviews", "users"
   add_foreign_key "products", "age_groups"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "users"
+  add_foreign_key "transactions", "products"
+  add_foreign_key "transactions", "users"
 end

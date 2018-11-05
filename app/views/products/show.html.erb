@@ -62,5 +62,16 @@
    </script>
    
 <% end %>
-|
+<%= link_to 'Back', profile_path %> 
+<%# <%= link_to 'Delete Item', business_product_path, method: :delete %>
+<% if @product.user_id == current_user.id %>
+<%= link_to 'Edit', edit_business_product_path %> 
+<% if @product.active? == true %>
+<%= link_to 'Make Product Inactive', inactive_business_product_path(@product, business_id: @product.user.business.id ), method: :put %>
+<% else %>
+<%= link_to 'Make Product Active', inactive_business_product_path(@product, business_id: @product.user.business.id ), method: :put %>
+<% end %>
+<% end %> 
+
+
 
