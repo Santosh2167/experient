@@ -7,6 +7,7 @@ class ProductsController < ApplicationController
   def index
     @products = Product.all
     @my_products = Product.where(user_id: current_user)
+    @user = User.find(current_user[:id])
   end
 
   def history
@@ -24,12 +25,39 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    # render current_user.email
+    #  @user = User.find(current_user[:id])
+    # render json: first_name
+    # render json: current_user[:first_name]
+  end
+
+  def process_payment
+    @amount = (params[:service_value][:price].to_f*100).round
+    @product_id =(params[:service_value][:id])
+    
+    
+    customer = Stripe::Customer.create(
+      :email => params[:stripeEmail],
+      :source  => params[:stripeToken]
+    )
+  
+    charge = Stripe::Charge.create(
+      :customer    => customer.id,
+      :amount      => @amount,
+      :description => 'Rails Stripe customer',
+      :currency    => 'aud'
+    )
+  
+  rescue Stripe::CardError => e
+    flash[:error] = e.message
+    redirect_to new_charge_path
+
     
   end
 
-  def buy_cc
+       
 
-  end
+
 
 
 
