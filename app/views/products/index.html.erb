@@ -1,36 +1,24 @@
-<p id="notice"><%= notice %></p>
-<% if user_signed_in? %>
-<%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-<% else%>
-<%= link_to 'Sign In', new_user_session_path %>
-<%= link_to 'Sign Up', new_user_registration_path%>
-<%end%>
-<%= link_to "View profile", profile_path%>
-
 <%=render "partials/product_search"%>
 
 
 
 <h1>Products</h1>
 
+<% @products.each do |product| %>
 
-
-  
-    <% @products.each do |product| %>
-      
-        <h3>Title: <%= link_to product.name, business_product_path(business_id: product.user.id, id: product.id)  %></h3>
-        <div>Price: $<%= product.cost %></div>
-        <div>Location: <%= product.location %></div>
-        <div>isActive?: <%= product.active %></div>
-        <div>Category: <%= product.category %></div>
-        <div>keywords: <%= product.keywords %></div>
-        <div>Description: <%= product.description %></div>
-        <div>
-          <span><%=link_to "View Detail",business_product_path(business_id: product.user.id, id: product.id)%></span>
-          <span><%=link_to "Buy Me",buy_path(product_id: product.id)%></span>
-        </div>
-        <br>
-     <% end %>
+  <h3>Title: <%= link_to product.name, business_product_path(business_id: product.user.id, id: product.id)  %></h3>
+  <div>Price: $<%= product.cost %></div>
+  <div>Location: <%= product.location %></div>
+  <div>isActive?: <%= product.active %></div>
+  <div>Category: <%= product.category %></div>
+  <div>keywords: <%= product.keywords %></div>
+  <div>Description: <%= product.description %></div>
+  <div>
+    <span><%=link_to "View Detail",business_product_path(business_id: product.user.id, id: product.id)%></span>
+    <span><%=link_to "Buy Me",buy_path(product_id: product.id)%></span>
+  </div>
+  <br>
+<% end %>
 
 <br>
 
