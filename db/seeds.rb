@@ -44,7 +44,7 @@ User.create(
     password: "password",
     password_confirmation: "password",
     post_code: 2019,
-    is_supplier: true
+    is_supplier: false
 )
 User.create(
     first_name: "Tyson",
