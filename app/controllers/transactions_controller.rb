@@ -8,7 +8,6 @@ before_action :add_params
     def create
         @transaction = Transaction.new(add_params)
         @transaction.user_id = current_user.id
-        @transaction.save
     end
 
     def add_params
