@@ -35,11 +35,6 @@ Hi <%= current_user.first_name.capitalize%>
     <%= link_to "Edit review", edit_product_review_path(x.id)%>
 <% end %>
 
-
-
-<%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-<%= link_to "Home", root_path %>
-
 <% if current_user.is_supplier == true %>
 <h2>Business Information</h2>
 
