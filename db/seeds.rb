@@ -16,7 +16,7 @@ age_ranges.each do |range|
     group_ids.push group.id
 end
 
-categories =["Advanture","Romance","Dining","Cake & Pastry","Film","Opera"]
+categories =["Adventure","Romance","Dining","Cake & Pastry","Film","Opera"]
 category_ids =[]
 categories.each do |cat|
     category = Category.create(
