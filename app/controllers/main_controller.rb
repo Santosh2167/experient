@@ -18,10 +18,10 @@ class MainController < ApplicationController
             @hasavatar = "You do not have an avatar"
         end
 
-        @my_businesses = Business.where(user_id: current_user)
+        @my_business = Business.where(user_id: current_user)
         @business = current_user.business
-        @my_products = Product.where(user_id: current_user)
-        @productreview = current_user.product_reviews
+        @transactions = Transaction.where(user_id: current_user)
+        @my_products = @my_business.Products.all
 
     end
 

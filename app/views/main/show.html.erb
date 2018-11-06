@@ -13,23 +13,23 @@ Hi <%= current_user.first_name.capitalize%>
     <%= render "/partials/avatar_upload"%>
 <% end %>
 
-<h2> Purchases </h2>
-<% @my_products.each do |p| %>
-<%= p.name %>
-<% end %>
 
-<h2> Product Reviews </h2>
-<% @productreview.each do |x|%>
+<h2> Purchases </h2>
+<% @transactions.each do |x|%>
     <div><%= x.product.name%></div>
-    <div> Rating: <%= x.rating %></div>
-    <div> Comment: <%= x.comment%></div>
-    <%= link_to "Edit review", edit_product_review_path(x.id)%>
+    <% if x.product.product_review_id.present? %>
+      <div> Rating: <%= x.product_id.product_review_id.rating %></div> 
+      <div> Comment: <%= x.product_id.product_review_id.comment%></div>
+      <%= link_to "Edit review", edit_product_review_path(x.id, product_id: x.product_id)%>
+    <% else %>
+      <%= link_to "Create review", new_product_review_path(product_id: x.id)%>
+    <% end %>
 <% end %>
 
 <% if current_user.is_supplier == true %>
 <h2>Business Information</h2>
 
-<% @my_businesses.each do |business| %>
+<% @my_business do |business| %>
 <p>
   <strong>Trading name:</strong>
   <%= business.trading_name %>
@@ -72,7 +72,7 @@ Hi <%= current_user.first_name.capitalize%>
 
 <h1>My Active Products</h1>
   
-    <% @my_products.each do |product| if product.active? %>
+    <% @my_products.each do |product| if product.active?%>
       
         <h3>Title: <%= link_to product.name, business_product_path(business_id: product.user.id, id: product.id)  %></h3>
         <div>Price: $<%= product.cost %></div>
