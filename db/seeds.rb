@@ -27,34 +27,60 @@ end
 
 Keywords = ["Family dining Bar Beer", "Chicken Scenic Ocean","Family Chicken Beer","BBQ Bar", "Scenic BBQ"]
 
-User.create(
-    first_name: "Blake",
-    last_name: "Doyle",
-    date_of_birth: "02/11/1993",
-    email: "blake@gmail.com",
-    password: "password",
-    password_confirmation: "password",
-    post_code: 2019
-)
-User.create(
-    first_name: "Santosh",
-    last_name: "Poudyal",
-    date_of_birth: "02/11/1993",
-    email: "santosh@gmail.com",
-    password: "password",
-    password_confirmation: "password",
-    post_code: 2019,
-    is_supplier: false
-)
-User.create(
-    first_name: "Tyson",
-    last_name: "Hofstetter",
-    date_of_birth: "02/11/1993",
-    email: "tyson@gmail.com",
-    password: "password",
-    password_confirmation: "password",
-    post_code: 2019
-)
+user_data = [
+            ["santosh","poudyal","02/11/1993","santosh.poudyal@gmail.com","password","password",1234],
+            ["blake","doyle","02/11/1993","blake.doyle@gmail.com","password","password",3456],
+            ["tyson","hofstetter","02/11/1993","tyson.hofstetter@gmail.com","password","password",4567]
+           ]
+
+outer_counter =0
+while outer_counter < user_data.length do
+    inner_counter =0
+    i=0
+    while inner_counter < user_data[outer_counter].length
+        User.create(
+            first_name: user_data[outer_counter][i],
+            last_name: user_data[outer_counter][i+1],
+            date_of_birth: user_data[outer_counter][i+2],
+            email: user_data[outer_counter][i+3],
+            password: user_data[outer_counter][i+4],
+            password_confirmation: user_data[outer_counter][i+5],
+            post_code: user_data[outer_counter][i+6]
+             )
+        inner_counter +=1
+        i=0
+    end
+    outer_counter +=1
+end
+
+#            User.create(
+#     first_name: "Blake",
+#     last_name: "Doyle",
+#     date_of_birth: "02/11/1993",
+#     email: "blake@gmail.com",
+#     password: "password",
+#     password_confirmation: "password",
+#     post_code: 2019
+# )
+# User.create(
+#     first_name: "Santosh",
+#     last_name: "Poudyal",
+#     date_of_birth: "02/11/1993",
+#     email: "santosh@gmail.com",
+#     password: "password",
+#     password_confirmation: "password",
+#     post_code: 2019,
+#     is_supplier: false
+# )
+# User.create(
+#     first_name: "Tyson",
+#     last_name: "Hofstetter",
+#     date_of_birth: "02/11/1993",
+#     email: "tyson@gmail.com",
+#     password: "password",
+#     password_confirmation: "password",
+#     post_code: 2019
+# )
 
 30.times do 
     Product.create(
