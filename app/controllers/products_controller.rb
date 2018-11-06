@@ -75,12 +75,7 @@ class ProductsController < ApplicationController
 
   end
 
-       
-
-
-
-
-
+ 
   # GET /products/new
   def new
     @product = Product.new
@@ -88,6 +83,13 @@ class ProductsController < ApplicationController
 
   end
 
+  def all_report
+    @all_txn = Transaction.all
+  end
+
+  def weekly_report
+    @weekly_txcn = Transaction.where(created_at: =< Date.today-6)
+  end
   # GET /products/1/edit
   def edit
     @business = User.find(params[:business_id]).business

@@ -10,4 +10,9 @@ class User < ApplicationRecord
   has_many :product_reviews
   has_many :transactions
 
+  def name
+   self.first_name + " " + self.last_name
+
+  end
+
 end

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :product_reviews
   root "main#home"
+  get "products/all_report", to:"products#all_report", as: "all_report"
   get "search/search_result", to:"search#search_result", as: "search_result"
   get "products/thankyou", to: "products#thankyou", as: "thankyou"
   get "products/:id", to:"products#show", as: "product_show"
