@@ -62,9 +62,9 @@ ActiveRecord::Schema.define(version: 2018_11_06_011854) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image"
     t.bigint "age_group_id"
     t.bigint "category_id"
+    t.string "image"
     t.index ["age_group_id"], name: "index_products_on_age_group_id"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["user_id"], name: "index_products_on_user_id"

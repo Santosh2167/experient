@@ -16,7 +16,8 @@ class ProductsController < ApplicationController
 
   def inactive_button
     @product = Product.find(params[:id])
-    @product.active = !@product.active
+    @product.active = false
+    # @product.active = !@product.active
     @product.save
 
     redirect_to profile_path
@@ -77,20 +78,25 @@ class ProductsController < ApplicationController
 
        
 
+  def advanced_search
+    @groups = AgeGroup.pluck("range","id")
+    @category = Category.pluck("category","id")
 
-
+  end
 
 
   # GET /products/new
   def new
     @product = Product.new
     @business = Business.find(params[:business_id])
+    @category = Category.pluck("category","id")
 
   end
 
   # GET /products/1/edit
   def edit
     @business = User.find(params[:business_id]).business
+    @category = Category.pluck("category","id")
   end
 
   # POST /products
