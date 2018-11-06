@@ -14,83 +14,103 @@ Hi <%= current_user.first_name.capitalize%>
 <% end %>
 
 <h2> Purchases </h2>
-<% @my_products.each do |p| %>
-<%= p.name %>
-<% end %>
 
-<h2> Product Reviews </h2>
-<% @productreview.each do |x|%>
-    <div><%= x.product.name%></div>
-    <div> Rating: <%= x.rating %></div>
-    <div> Comment: <%= x.comment%></div>
-    <%= link_to "Edit review", edit_product_review_path(x.id)%>
+
+<div>
+<% @transactions.each do |t| %>
+  <% if t.user_id == current_user.id%>
+  <div>
+  <%= t.product.name%>
+  </div>
+  <div>
+  <%= t.product.cost%>
+  </div>
+    <% @productreviews.each do |x| %>
+      <% if x.user_id == current_user.id%>
+        <div>
+          Rating: <%= x.rating %>
+        </div>
+        <div>
+          Comment: <%= x.comment%>
+        </div>
+        <%= link_to "Edit review", edit_product_review_path(x.id,product_id: x.product_id)%>
+      <% else %>
+      <div>
+      <div>
+          Name: <%= x.product.name %> 
+        </div>
+        <%= link_to "Create review", new_product_review_path(product_id: x.product.id)%>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
 <% end %>
+</div>
+
 
 <% if current_user.is_supplier == true %>
 <h2>Business Information</h2>
 
 <% @my_businesses.each do |business| %>
 <p>
-  <strong>Trading name:</strong>
-  <%= business.trading_name %>
+<strong>Trading name:</strong>
+<%= business.trading_name %>
 </p>
 
 <p>
-  <strong>Registered business name:</strong>
-  <%= business.registered_business_name %>
+<strong>Registered business name:</strong>
+<%= business.registered_business_name %>
 </p>
 
 <p>
-  <strong>Business address:</strong>
-  <%= business.business_address %>
+<strong>Business address:</strong>
+<%= business.business_address %>
 </p>
 
 <p>
-  <strong>Post code:</strong>
-  <%= business.post_code %>
+<strong>Post code:</strong>
+<%= business.post_code %>
 </p>
 
 <p>
-  <strong>Abn:</strong>
-  <%= business.abn %>
+<strong>Abn:</strong>
+<%= business.abn %>
 </p>
 
 <p>
-  <strong>Phone number:</strong>
-  <%= business.phone_number %>
+<strong>Phone number:</strong>
+<%= business.phone_number %>
 </p>
 
-    <%= link_to 'Show', business %>
-    <%= link_to 'Edit', edit_business_path(business) %>
-    <%# <%= link_to 'Destroy', business, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Show', business %>
+<%= link_to 'Edit', edit_business_path(business) %>
+<%# <%= link_to 'Destroy', business, method: :delete, data: { confirm: 'Are you sure?' } %>
 
 <br>
 
-        <%= link_to "New Product", new_business_product_path(business_id: @business.id)%> 
-        <%= link_to "History", history_path(business_id: @business.id)%>
+<%= link_to "New Product", new_business_product_path(business_id: @business.id)%> 
+<%= link_to "History", history_path(business_id: @business.id)%>
 <% end %>
 
 <h1>My Active Products</h1>
-  
-    <% @my_products.each do |product| if product.active? %>
-      
-        <h3>Title: <%= link_to product.name, business_product_path(business_id: product.user.id, id: product.id)  %></h3>
-        <div>Price: $<%= product.cost %></div>
-        <div>Location: <%= product.location %></div>
-        <div>isActive?: <%= product.active %></div>
-        <div>Category: <%= product.category %></div>
-        <div>keywords: <%= product.keywords %></div>
-        <div>Description: <%= product.description %></div>
-        <div>
-          <span><%=link_to "View Detail",business_product_path(business_id: product.user.id, id: product.id)%></span>
-          <span><%=link_to "Buy Me",business_product_path(business_id: product.user.id, id: product.id)%></span>
-          <% if product.active? == true %>
-          <span><%= link_to 'Make Product Inactive', inactive_business_product_path(business_id: product.user.id, id: product.id), method: :put %></span>
-          <% else %>
-          <span><%= link_to 'Make Product Active', inactive_business_product_path(business_id: product.user.id, id: product.id), method: :put %></span>
-          <% end %>
-        </div>
-        <br>
-        <% end %>
-      <% end %> 
-<% end %>  
+<% @my_products.each do |product| if product.active? %>
+<h3>Title: <%= link_to product.name, business_product_path(business_id: product.user.id, id: product.id) %></h3>
+<div>Price: $<%= product.cost %></div>
+<div>Location: <%= product.location %></div>
+<div>isActive?: <%= product.active %></div>
+<div>Category: <%= product.category %></div>
+<div>keywords: <%= product.keywords %></div>
+<div>Description: <%= product.description %></div>
+<div>
+<span><%=link_to "View Detail",business_product_path(business_id: product.user.id, id: product.id)%></span>
+<span><%=link_to "Buy Me",business_product_path(business_id: product.user.id, id: product.id)%></span>
+<% if product.active? == true %>
+<span><%= link_to 'Make Product Inactive', inactive_business_product_path(business_id: product.user.id, id: product.id), method: :put %></span>
+<% else %>
+<span><%= link_to 'Make Product Active', inactive_business_product_path(business_id: product.user.id, id: product.id), method: :put %></span>
+<% end %>
+</div>
+<br>
+<% end %>
+<% end %> 
+<% end %> 

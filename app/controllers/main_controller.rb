@@ -21,9 +21,11 @@ class MainController < ApplicationController
         @my_businesses = Business.where(user_id: current_user)
         @business = current_user.business
         @my_products = Product.where(user_id: current_user)
-        @productreview = current_user.product_reviews
-
+        @transactions = Transaction.where(user_id: current_user)
+        @productreviews = ProductReview.where(user_id: current_user)
     end
+        
+        
 
     def update
         current_user.avatar = params[:avatar]

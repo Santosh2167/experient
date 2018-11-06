@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
   def index
     @products = Product.all
     @my_products = Product.where(user_id: current_user)
-    @user = User.find(current_user[:id])
+    # @user = User.find(current_user[:id])
   end
 
   def history
@@ -16,7 +16,8 @@ class ProductsController < ApplicationController
 
   def inactive_button
     @product = Product.find(params[:id])
-    @product.active = !@product.active
+    @product.active = false
+    # @product.active = !@product.active
     @product.save
 
     redirect_to profile_path
@@ -64,6 +65,11 @@ class ProductsController < ApplicationController
         user_id: current_user.id
        )
 
+       ProductReview.create(
+         product_id: @product_id,
+         user_id: current_user.id
+       )
+
       #  @transaction.save
     
     # @transaction.save
@@ -84,11 +90,17 @@ class ProductsController < ApplicationController
 
   end
 
- 
+  def advanced_search
+    @groups = AgeGroup.pluck("range","id")
+    @category = Category.pluck("category","id")
+
+  end
+
   # GET /products/new
   def new
     @product = Product.new
     @business = Business.find(params[:business_id])
+    @category = Category.pluck("category","id")
 
   end
 
@@ -102,6 +114,7 @@ class ProductsController < ApplicationController
   # GET /products/1/edit
   def edit
     @business = User.find(params[:business_id]).business
+    @category = Category.pluck("category","id")
   end
 
   # POST /products
