@@ -21,8 +21,6 @@ class MainController < ApplicationController
         @my_business = Business.where(user_id: current_user)
         @business = current_user.business
         @transactions = Transaction.where(user_id: current_user)
-        @my_products = @my_business.Products.all
-
     end
 
     def update

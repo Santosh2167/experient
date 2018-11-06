@@ -28,40 +28,38 @@ Hi <%= current_user.first_name.capitalize%>
 
 <% if current_user.is_supplier == true %>
 <h2>Business Information</h2>
-
-<% @my_business do |business| %>
 <p>
   <strong>Trading name:</strong>
-  <%= business.trading_name %>
+  <%= @business.trading_name %>
 </p>
 
 <p>
   <strong>Registered business name:</strong>
-  <%= business.registered_business_name %>
+  <%= @business.registered_business_name %>
 </p>
 
 <p>
   <strong>Business address:</strong>
-  <%= business.business_address %>
+  <%= @business.business_address %>
 </p>
 
 <p>
   <strong>Post code:</strong>
-  <%= business.post_code %>
+  <%= @business.post_code %>
 </p>
 
 <p>
   <strong>Abn:</strong>
-  <%= business.abn %>
+  <%= @business.abn %>
 </p>
 
 <p>
   <strong>Phone number:</strong>
-  <%= business.phone_number %>
+  <%= @business.phone_number %>
 </p>
 
-    <%= link_to 'Show', business %>
-    <%= link_to 'Edit', edit_business_path(business) %>
+    <%= link_to 'Show', @business %>
+    <%= link_to 'Edit', edit_business_path(@business) %>
     <%# <%= link_to 'Destroy', business, method: :delete, data: { confirm: 'Are you sure?' } %>
 
 <br>
@@ -92,5 +90,4 @@ Hi <%= current_user.first_name.capitalize%>
         </div>
         <br>
         <% end %>
-      <% end %> 
 <% end %>  
