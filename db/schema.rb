@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_02_032210) do
+ActiveRecord::Schema.define(version: 2018_11_06_011854) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "age_groups", force: :cascade do |t|
+    t.text "range"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "businesses", force: :cascade do |t|
     t.string "trading_name"
@@ -26,6 +32,12 @@ ActiveRecord::Schema.define(version: 2018_11_02_032210) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.index ["user_id"], name: "index_businesses_on_user_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "product_reviews", force: :cascade do |t|
@@ -50,6 +62,11 @@ ActiveRecord::Schema.define(version: 2018_11_02_032210) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
+    t.bigint "age_group_id"
+    t.bigint "category_id"
+    t.index ["age_group_id"], name: "index_products_on_age_group_id"
+    t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 
@@ -88,6 +105,8 @@ ActiveRecord::Schema.define(version: 2018_11_02_032210) do
   add_foreign_key "businesses", "users"
   add_foreign_key "product_reviews", "products"
   add_foreign_key "product_reviews", "users"
+  add_foreign_key "products", "age_groups"
+  add_foreign_key "products", "categories"
   add_foreign_key "products", "users"
   add_foreign_key "transactions", "products"
   add_foreign_key "transactions", "users"

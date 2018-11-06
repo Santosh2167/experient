@@ -5,6 +5,28 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+age_ranges = ["0-99","10-20","21-30","31-40","41-50","50+"]
+group_ids = []
+
+age_ranges.each do |range|
+    group = AgeGroup.create(
+        range: range
+    )
+    group_ids.push group.id
+end
+
+categories =["Adventure","Romance","Dining","Cake & Pastry","Film","Opera"]
+category_ids =[]
+categories.each do |cat|
+    category = Category.create(
+        category: cat
+    )
+    category_ids.push category.id
+end
+
+Keywords = ["Family dining Bar Beer", "Chicken Scenic Ocean","Family Chicken Beer","BBQ Bar", "Scenic BBQ"]
+
 User.create(
     first_name: "Blake",
     last_name: "Doyle",
@@ -22,7 +44,7 @@ User.create(
     password: "password",
     password_confirmation: "password",
     post_code: 2019,
-    is_supplier: true
+    is_supplier: false
 )
 User.create(
     first_name: "Tyson",
@@ -33,16 +55,21 @@ User.create(
     password_confirmation: "password",
     post_code: 2019
 )
+
 30.times do 
     Product.create(
         name: Faker::Appliance.equipment,
         cost: Faker::Number.decimal(3,2),
         description: Faker::Lorem.paragraph(2), 
         active: true,
-        category: Faker::Appliance.brand,
-        keywords: "Adventure",
+        keywords: Faker::Lorem.sentence,
+        image: File.open(Rails.root + "app/assets/images/default.jpg"),
+        # category: Faker::Appliance.brand,
+        # keywords: "Adventure",
         user_id: 1,
-        location: Faker::HarryPotter.location
+        location: Faker::HarryPotter.location,
+        age_group_id: group_ids[rand(group_ids.length)],
+        category_id: category_ids[rand(category_ids.length)],
     )
 end
 
