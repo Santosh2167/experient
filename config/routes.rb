@@ -2,12 +2,15 @@ Rails.application.routes.draw do
   resources :product_reviews
   root "main#home"
   get "search/search_result", to:"search#search_result", as: "search_result"
+  get "products/thankyou", to: "products#thankyou", as: "thankyou"
   get "products/:id", to:"products#show", as: "product_show"
   get "search/advanced_search",to: "search#advanced_search", as:"advanced_search"
   post "search/advanced_search", to: "search#advanced_search_process"
   post "/process_payment", to: "products#process_payment", as: "payment"
   # get "movies/new", to: "movies#new", as: 'new_movie'
   get "/businesses/:business_id/products/my_products", to: "products#history", as: "history"
+  
+  
   resources :businesses do
     resources :products do
       member do

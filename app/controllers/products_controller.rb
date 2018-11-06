@@ -32,6 +32,7 @@ class ProductsController < ApplicationController
   end
 
   def process_payment
+    # render json: params
     @amount = (params[:service_value][:price].to_f*100).round
     @product_id =(params[:service_value][:id])
     
@@ -48,11 +49,30 @@ class ProductsController < ApplicationController
       :currency    => 'aud'
     )
   
+        # Transaction.create(
+    #   charge.metadata.service_id
+    # )
+
+     Transaction.create(
+        amount: (@amount/100),
+        product_id: @product_id,
+        user_id: current_user.id
+       )
+
+      #  @transaction.save
+    
+    # @transaction.save
+    redirect_to thankyou_path(product_id: @product_id)
   rescue Stripe::CardError => e
     flash[:error] = e.message
-    redirect_to new_charge_path
 
     
+
+  end
+
+  def thankyou
+    @product = Product.find(params[:product_id])
+
   end
 
        
