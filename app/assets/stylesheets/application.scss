@@ -30,6 +30,27 @@
  .container {
      margin: 0, 3em;
  }
- .navbar-nav{
-     margin-right: 2em;
+ h2{
+     text-align: center;
  }
+ .featured{
+     display: inline-flex;
+     margin: 0;
+ }
+ .featured-content{
+     margin: 0;
+     display: inline-block;
+     max-width: 300px;
+ }
+//  .featured-image{
+//      max-width: 300px;
+//  }
+//  .featured-name{
+//     max-width: 300px;
+//  }
+//  .featured-cost{
+//      max-width: 300px;
+//  }
+//  .featured-description{
+//      max-width: 300px;
+//  }

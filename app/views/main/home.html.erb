@@ -23,17 +23,17 @@
     <% end %>
 <br>
 
+
 <h2> Featured Products </h2>
+<div class = "featured">
 <% @featured.each do |x| %>
-<div class = "feautred">
+<div class = "featured-content">
 <div class= "featured-name">
     <%= x.name%>
 </div>
-<% if x.image.present?%>
 <div class = "featured-image">
     <%= image_tag x.image_url%>
 </div>
-<% end %>
 <div class = "featured-description">
     <%= x.description%>
 </div>
@@ -45,3 +45,4 @@
 </div>
 <br>
 <% end %>
+</div>
