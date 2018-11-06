@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user! 
-
+ 
   # GET /products
   # GET /products.json
   def index
@@ -34,22 +34,27 @@ class ProductsController < ApplicationController
 
   def process_payment
     # render json: params
+    
     @amount = (params[:service_value][:price].to_f*100).round
     @product_id =(params[:service_value][:id])
     
     
-    customer = Stripe::Customer.create(
-      :email => params[:stripeEmail],
-      :source  => params[:stripeToken]
-    )
-  
+    # customer = Stripe::Customer.create(
+    #   :email => params[:stripeEmail],
+    #   :source  => params[:stripeToken]
+    # )
+
+    cu = Stripe::Customer.retrieve(current_user.customer_id)
+    cu.source = params[:stripeToken]
+    cu.save
+
     charge = Stripe::Charge.create(
-      :customer    => customer.id,
+      :customer    => current_user.customer_id,
       :amount      => @amount,
       :description => 'Rails Stripe customer',
       :currency    => 'aud'
     )
-  
+    
         # Transaction.create(
     #   charge.metadata.service_id
     # )
@@ -68,8 +73,12 @@ class ProductsController < ApplicationController
       #  @transaction.save
     
     # @transaction.save
+    
     redirect_to thankyou_path(product_id: @product_id)
+    
+
   rescue Stripe::CardError => e
+    
     flash[:error] = e.message
 
     
@@ -81,14 +90,11 @@ class ProductsController < ApplicationController
 
   end
 
-       
-
   def advanced_search
     @groups = AgeGroup.pluck("range","id")
     @category = Category.pluck("category","id")
 
   end
-
 
   # GET /products/new
   def new
@@ -98,6 +104,13 @@ class ProductsController < ApplicationController
 
   end
 
+  def all_report
+    @all_txn = Transaction.all
+  end
+
+  def weekly_report
+    # @weekly_txcn = Transaction.where(created_at: =< Date.today-6)
+  end
   # GET /products/1/edit
   def edit
     @business = User.find(params[:business_id]).business
