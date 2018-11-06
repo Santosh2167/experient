@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
   def index
     @products = Product.all
     @my_products = Product.where(user_id: current_user)
-    @user = User.find(current_user[:id])
+    # @user = User.find(current_user[:id])
   end
 
   def history

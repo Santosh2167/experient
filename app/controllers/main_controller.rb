@@ -8,7 +8,6 @@ class MainController < ApplicationController
     def home
         # @business = current_user.business
         @featured = Product.where(id: Product.pluck(:id).sample(3))
-        @business = current_user.business
     end
 
     def show
@@ -23,6 +22,7 @@ class MainController < ApplicationController
         @business = current_user.business
         @my_products = Product.where(user_id: current_user)
         @transactions = Transaction.where(user_id: current_user)
+        @productreviews = ProductReview.where(user_id: current_user)
     end
         
         

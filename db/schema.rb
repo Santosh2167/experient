@@ -64,11 +64,8 @@ ActiveRecord::Schema.define(version: 2018_11_06_024255) do
     t.datetime "updated_at", null: false
     t.bigint "age_group_id"
     t.bigint "category_id"
-<<<<<<< HEAD
     t.bigint "product_review_id"
-=======
     t.string "image"
->>>>>>> b4060cf1219c23dc30121d21d067e9943c149c06
     t.index ["age_group_id"], name: "index_products_on_age_group_id"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["product_review_id"], name: "index_products_on_product_review_id"

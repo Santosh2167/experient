@@ -15,16 +15,32 @@ Hi <%= current_user.first_name.capitalize%>
 
 
 <h2> Purchases </h2>
-<% @transactions.each do |x|%>
-    <div><%= x.product.name%></div>
-    <% if x.product.product_review_id.present? %>
-      <div> Rating: <%= x.product_id.product_review_id.rating %></div> 
-      <div> Comment: <%= x.product_id.product_review_id.comment%></div>
-      <%= link_to "Edit review", edit_product_review_path(x.id, product_id: x.product_id)%>
-    <% else %>
-      <%= link_to "Create review", new_product_review_path(product_id: x.id)%>
+
+
+<div>
+<% @transactions.each do |t| %>
+  <% if t.user_id == current_user.id%>
+    <%= t.product.name %>
+    <% @productreviews.each do |x| %>
+      <% if x.user_id == current_user.id%>
+        <div>
+          Name: <%= x.product.name %> 
+        </div>
+        <div>
+          Rating: <%= x.rating %>
+        </div>
+        <div>
+          Comment: <%= x.comment%>
+        </div>
+        <%= link_to "Edit review", edit_product_review_path(t.id, product_id: t.product_id)%>
+      <% else %>
+        <%= link_to "Create review", new_product_review_path(product_id: t.id)%>
+      <% end %>
     <% end %>
+  <% end %>
 <% end %>
+</div>
+
 
 <% if current_user.is_supplier == true %>
 <h2>Business Information</h2>
