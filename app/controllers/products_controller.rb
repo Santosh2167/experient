@@ -60,6 +60,11 @@ class ProductsController < ApplicationController
         user_id: current_user.id
        )
 
+       ProductReview.create(
+         product_id: @product_id,
+         user_id: current_user.id
+       )
+
       #  @transaction.save
     
     # @transaction.save
