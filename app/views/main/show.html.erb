@@ -16,7 +16,6 @@ Hi <%= current_user.first_name.capitalize%>
 <h2> Purchases </h2>
 
 
-Create an empty review when a product is purchased
 <div>
 <% @transactions.each do |t| %>
   <% if t.user_id == current_user.id%>
