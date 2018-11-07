@@ -35,7 +35,7 @@ Hi <%= current_user.first_name.capitalize%>
         </div>
       <% else%>
         <div>
-          <%= link_to "Create review", new_product_review_path(x.id, product_id: x.product.id)%>
+          <%= link_to "Create review", edit_product_review_path(x.id,product_id: x.product.id)%>
         </div>
       <% end %>
   <% end %>

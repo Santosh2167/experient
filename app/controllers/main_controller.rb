@@ -21,7 +21,6 @@ class MainController < ApplicationController
         @my_businesses = Business.where(user_id: current_user)
         @business = current_user.business
         @my_products = Product.where(user_id: current_user)
-        @transactions = Transaction.where(user_id: current_user)
         @productreviews = ProductReview.where(user_id: current_user)
     end
         
