@@ -71,6 +71,7 @@ The design process was based off similar applications. We drew inspiration from 
 ---
 
 ## Details & planning
+![require](docs/slack.png)
 ![require](docs/trello1.png)
 ![require](docs/trello2.png)
 ![require](docs/trello3.png)
