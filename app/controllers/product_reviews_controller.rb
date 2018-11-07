@@ -15,7 +15,7 @@ class ProductReviewsController < ApplicationController
   # GET /product_reviews/new
   def new
     @product_review = ProductReview.new
-    @product_id = params[:product_id]
+    @transaction_id = params[:transaction_id]
   end
 
   # GET /product_reviews/1/edit
@@ -28,8 +28,7 @@ class ProductReviewsController < ApplicationController
     
     @product_review = ProductReview.new(product_review_params)
     @product_review.user_id = current_user.id
-    @product_review.product_id = params[:product_review][:product_id]
-
+    @product_review.transaction_id = params[:product_review][:transaction_id]
     respond_to do |format|
       if @product_review.save
         format.html { redirect_to @product_review, notice: 'Product review was successfully created.' }
@@ -73,6 +72,6 @@ class ProductReviewsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_review_params
-      params.require(:product_review).permit(:rating, :comment, :user_id, :product_id)
+      params.require(:product_review).permit(:rating, :comment, :user_id)
     end
 end
