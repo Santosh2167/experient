@@ -4,18 +4,33 @@ Hi <%= current_user.first_name.capitalize%>
 <div>
     <%= image_tag current_user.avatar_url%>
 </div>
-<h2> Purchases </h2>
 
+
+If transcation.product_id does not exist in productreviews, have create review button. If it does exist but the review is empty,
+also have create review. Otherwise have the rating and comment for the review and edit review button.
+
+<h2> Purchases </h2>
 <div> 
 <% @transactions.each do |t| %>
-  <div>
-    Name: <%=t.product.name%>
-  </div>
-  <div>
-    Cost: $<%=t.product.cost%>
-  </div>
-  <div>
-    <%= link_to "Create review", new_product_review_path(product_id: t.product_id)%>
+      <div>
+      Name: <%=t.product.name%>
+      </div>
+      <div>
+      Cost: $<%=t.product.cost%>
+      </div>
+      <div>
+        <% if t.product_review %>
+          <div>
+          <%= t.product_review.rating%>
+          </div>
+          <div>
+          <%= t.product_review.comment%>
+          </div>
+          <%= link_to "Edit review", edit_product_review_path(t.product_review.id)%>
+        <% else %>
+          <%= link_to "Create review", new_product_review_path(transaction_id: t.id)%>
+        <% end %>
+      </div>
 <% end%>
 </div>
 
