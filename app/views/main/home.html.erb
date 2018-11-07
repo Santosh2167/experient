@@ -1,30 +1,46 @@
+<div class="jumbotron">
 <% if user_signed_in? %>
-    <h1>Hey <%= current_user.first_name.capitalize %></h1>
-    <% if current_user.is_supplier == true && current_user.business%>
-        <h4><a class="business-link" href="/profile"><%= current_user.business.trading_name%></a></h4>
-    <% end %>
+    <h1 class="display-4">Hey <%= current_user.first_name.capitalize %></h1>
+<% else %>
+    <h1 class="display-4">Welcome!</h1>
+    <div class="sign_buttons ">
+    <%=link_to "Sign in", new_user_session_path, class: "btn btn-primary sign_in_button"%>
+    <%=link_to "Sign up", new_user_registration_path, class: "btn btn-primary"%>
+</div>
 <% end %>
-<div class="searchbar">
+    <p class="underline">What would you like to search today?</p>
+    <%# <% if current_user.is_supplier == true && current_user.business%> 
+        <%# <h4><a class="business-link" href="/profile"><%= current_user.business.trading_name%></a></h4> 
+    <%# <% end %> 
+<div class="input-group input-group-sm mb-3">
 <%=render "partials/product_search"%>
 </div>
-<%=link_to "Reports", all_report_path%>
-<% if current_user%>
-<div>
-    <% if current_user.is_supplier == true && current_user.business%>
-        <%# <%= link_to "View Businesses", businesses_path%>
-        <%# <%= link_to "New Product", new_business_product_path(business_id: @business.id)%> 
-        <%# <%= link_to "View Products", business_products_path(business_id: @business.id)%> 
-    <% end %>
-</div>
-    <% else %>
-<div class="sign_in">
-    <%=link_to "Sign in", new_user_session_path%>
-    <%=link_to "Sign up", new_user_registration_path%>
-</div>
-    <% end %>
-<br>
+<%=link_to "Reports", all_report_path, class: "report_link"%>
 
+</div>
 
+<h2 class="featured_title"> Featured Products </h2>
+
+<div class="featured">
+<% @featured.each do |x| %>
+<div class="card" style="width: 18rem;">
+<%=link_to business_product_path(business_id: x.user.id, id: x.id) do %>
+<%= image_tag (x.image_url), class: "card-img-top", src: ".../100px180/", alt: "Card image cap" %>
+<% end %>
+    <div class="card-body">
+    <h5 class="card-title"><%= x.name%></h5>
+    <p class="card-text"><%= x.description%></p>
+    <div class = "featured-cost">
+    $<%= x.cost%>
+    </div>
+    <%=link_to "Buy Me",business_product_path(business_id: x.user.id, id: x.id), class: "btn btn-primary"%>
+    <%=link_to "View Detail",business_product_path(business_id: x.user.id, id: x.id), class: "btn btn-primary"%>
+  </div>
+</div>
+<% end %>
+</div> 
+
+<!--
 <h2> Featured Products </h2>
 <div class = "featured">
 <% @featured.each do |x| %>
@@ -46,4 +62,4 @@
 </div>
 <br>
 <% end %>
-</div>
+</div> -->

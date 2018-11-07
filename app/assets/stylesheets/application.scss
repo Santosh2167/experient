@@ -24,7 +24,7 @@
  }
 
  .searchbar {
-     width: 1000px;
+     width: 900px;
      margin: 0;
  }
 
@@ -42,9 +42,45 @@
      color: red;
  }
  .featured{
-     display: inline-flex;
+     display: flex;
+     justify-content: space-between;
      margin: 0;
+     margin-bottom: 30px;
  }
+
+ .featured_title {
+     margin-bottom: 40px;
+     text-decoration: underline;
+ }
+
+ .report_link {
+     display: block;
+     position: absolute;
+     margin-top: -15px;
+ }
+
+ .sign_link {
+    display: block;
+    position: absolute;
+    margin-top: 10px;
+}
+
+.sign_buttons {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.sign_in_button {
+    margin-right: 20px;
+    
+}
+
+ .underline {
+     text-align: center;
+     font-size: 1.8em;
+ }
+
  .featured-content{
      margin: 0;
      display: inline-block;

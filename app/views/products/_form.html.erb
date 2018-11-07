@@ -47,6 +47,11 @@
   </div>
 
   <div class="field">
+    <%= form.label "Age Group" %>
+    <%= form.select :age_group_id, @agegroup %>
+  </div>
+
+  <div class="field">
     <%= form.label :keywords %>
     <%= form.text_area :keywords %>
   </div>

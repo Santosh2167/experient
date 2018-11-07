@@ -24,8 +24,6 @@ class MainController < ApplicationController
         @productreviews = ProductReview.where(user_id: current_user)
     end
         
-        
-
     def update
         current_user.avatar = params[:avatar]
         current_user.save
