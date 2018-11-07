@@ -122,7 +122,6 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @product.user_id = current_user.id
-    byebug
     respond_to do |format|
       if @product.save
         format.html { redirect_to profile_path, notice: 'Product was successfully created.' }
