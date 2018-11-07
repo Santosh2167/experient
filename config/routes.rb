@@ -6,8 +6,9 @@ Rails.application.routes.draw do
   get "products/thankyou", to: "products#thankyou", as: "thankyou"
   get "products/:id", to:"products#show", as: "product_show"
   get "search/advanced_search",to: "search#advanced_search", as:"advanced_search"
-  post "search/advanced_search", to: "search#advanced_search_process"
+  post "search/advanced_search", to: "search#advanced_search_result"
   post "/process_payment", to: "products#process_payment", as: "payment"
+  get "search/advance_search_result", to: "search#advance_search_result", as: "advance_search_result"
   # get "movies/new", to: "movies#new", as: 'new_movie'
   get "/businesses/:business_id/products/my_products", to: "products#history", as: "history"
   

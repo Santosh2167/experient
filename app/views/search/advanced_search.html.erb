@@ -1,11 +1,11 @@
-<h1> you are in advance search</h1>
+<h1> Advance Search</h1>
 <p>View>search>advanced_search.html.erb</p>
 <%# 
 <%= text_field_tag :search, params[:search]%> 
 
 <%= form_with url: advanced_search_path,local:true do |form|%>
     <div class="field">
-        <%= form.label "Keywords"%>
+        <%= form.label "Keywords*"%>
         <%= form.text_field :keywords%>
     </div>
 
@@ -17,18 +17,13 @@
     
     <div class="field">
         <%= form.label  :min_cost, "Min Price"%> - <%= form.text_field :max_cost, size: 10%>
-        <%= form.label  :max_cost, "Max Price"%> - <%= form.text_field :max_cost, size: 10%>
+        <%= form.label  :max_cost, "Max Price"%> - <%= form.text_field :max_cost, size: 10, :value=>"10000"%>
     </div>
 
     <div class="field">
+        <%=form.label "Age Group"%>
         <%= form.select :age_group_id,  @groups %>
                  
-    </div>
-
-
-
-    <div class= "field">
-        <%= form.label :active, "Rating:"%>
     </div>
 
     <div class="action">
@@ -36,6 +31,7 @@
     </div>
 
 <%end%>
+<p>(* necessary field)</p>
 
 
     

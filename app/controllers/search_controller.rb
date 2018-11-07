@@ -14,34 +14,21 @@ class SearchController < ApplicationController
     end
 
     def advanced_search_process
-        # render json: params
-        # products = Product.all
-        # byebug
-        # query = Product.where(["keywords ILIKE ? AND category ILIKE ? AND cost ILIKE ?",
-        #                     "%#{params[:keywords] if params[:keywords].present?}%", 
-        #                     "%#{params[:category] if params[:category].present?}%",
-        #                     "%#{params[:cost] if params[:cost].present?}%"
-        #                 ])
-        # byebug
-        query = Product.all   
+
+        # query = Product.all   
         query = Product.where("keywords ILIKE ?","%#{params[:keywords]}%")
-            .where(category_id: params[:category_id].to_i)
-            .where("cost >= ?",params[:min_cost].to_f)
-            .where("cost <= ?",params[:max_cost].to_f)
-        
-        
+                 .where(category_id: params[:category_id].to_i)
+                 .where("cost >= ?",params[:min_cost].to_f)
+                 .where("cost <= ?",params[:max_cost].to_f)
+                 .where(age_group_id: params[:age_group_id].to_i)
 
-            # render json: query
-
-            render json: query
+        # render json: query
+        # redirect_to advance_search_result_path
+    end
+    def advanced_search_result
+        @result = advanced_search_process
+    
+        # puts "test"
 
     end
-
-    
-
-
-
-
-
-
 end

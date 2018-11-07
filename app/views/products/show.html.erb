@@ -22,6 +22,22 @@
   <%= @product.description %>
 </p>
 
+<p>
+  <strong>Age Group:</strong>
+  <%= @product.age_group_id %>
+</p>
+
+
+<p>
+  <strong>Keywords:</strong>
+  <%= @product.keywords %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @product.category_id %>
+</p
+
 
 
 <%= form_with url: payment_path do %>
@@ -55,7 +71,7 @@
 
 
   <% if @product.user_id == current_user.id %>
-  <%= link_to 'Edit', edit_business_product_path %> 
+  <%# <%= link_to 'Edit', edit_business_product_path %> 
   <% if @product.active? == true %>
   <%# <%= link_to 'Make Product Inactive', inactive_business_product_path(@product, business_id: @product.user.business.id ), method: :put %>
   <% else %>

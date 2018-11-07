@@ -53,34 +53,7 @@ while outer_counter < user_data.length do
     outer_counter +=1
 end
 
-#            User.create(
-#     first_name: "Blake",
-#     last_name: "Doyle",
-#     date_of_birth: "02/11/1993",
-#     email: "blake@gmail.com",
-#     password: "password",
-#     password_confirmation: "password",
-#     post_code: 2019
-# )
-# User.create(
-#     first_name: "Santosh",
-#     last_name: "Poudyal",
-#     date_of_birth: "02/11/1993",
-#     email: "santosh@gmail.com",
-#     password: "password",
-#     password_confirmation: "password",
-#     post_code: 2019,
-#     is_supplier: false
-# )
-# User.create(
-#     first_name: "Tyson",
-#     last_name: "Hofstetter",
-#     date_of_birth: "02/11/1993",
-#     email: "tyson@gmail.com",
-#     password: "password",
-#     password_confirmation: "password",
-#     post_code: 2019
-# )
+
 
 30.times do 
     Product.create(
