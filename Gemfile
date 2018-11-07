@@ -84,3 +84,5 @@ gem "better_errors", "~> 2.5"
 
 gem "binding_of_caller", "~> 0.8.0"
 
+
+gem "mailgun-ruby", "~> 1.1"
