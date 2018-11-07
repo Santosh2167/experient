@@ -101,7 +101,7 @@ class ProductsController < ApplicationController
     @product = Product.new
     @business = Business.find(params[:business_id])
     @category = Category.pluck("category","id")
-
+    @agegroup = AgeGroup.pluck("range", "id")
   end
 
   def all_report
@@ -122,7 +122,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @product.user_id = current_user.id
-
+    byebug
     respond_to do |format|
       if @product.save
         format.html { redirect_to profile_path, notice: 'Product was successfully created.' }
