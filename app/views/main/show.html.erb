@@ -6,31 +6,19 @@ Hi <%= current_user.first_name.capitalize%>
 </div>
 <h2> Purchases </h2>
 
-<div>
-  <% @productreviews.each do |x| %>
-      <div>
-        Name: <%= x.product.name %>
-      </div>
-      <div>
-        Cost: $<%= x.product.cost %>
-      </div>
-      <% if x.comment != nil %>
-        <div>
-          Rating: <%= x.rating %>
-        </div>
-        <div>
-          Comment: <%= x.comment%>
-        </div>
-        <div>
-          <%= link_to "Edit review", edit_product_review_path(x.id,product_id: x.product_id)%>
-        </div>
-      <% else%>
-        <div>
-          <%= link_to "Create review", edit_product_review_path(x.id,product_id: x.product.id)%>
-        </div>
-      <% end %>
-  <% end %>
+<div> 
+<% @transactions.each do |t| %>
+  <div>
+    Name: <%=t.product.name%>
+  </div>
+  <div>
+    Cost: $<%=t.product.cost%>
+  </div>
+  <div>
+    <%= link_to "Create review", new_product_review_path(product_id: t.product_id)%>
+<% end%>
 </div>
+
 
 
 <% if current_user.is_supplier == true %>

@@ -15,8 +15,7 @@ class ProductReviewsController < ApplicationController
   # GET /product_reviews/new
   def new
     @product_review = ProductReview.new
-    @product_review.user_id = current_user.id
-    @product_review.product_id = params.permit(:product_id)[:product_id]
+    @product_id = params[:product_id]
   end
 
   # GET /product_reviews/1/edit
@@ -26,7 +25,10 @@ class ProductReviewsController < ApplicationController
   # POST /product_reviews
   # POST /product_reviews.json
   def create
+    
     @product_review = ProductReview.new(product_review_params)
+    @product_review.user_id = current_user.id
+    @product_review.product_id = params[:product_review][:product_id]
 
     respond_to do |format|
       if @product_review.save
