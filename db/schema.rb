@@ -62,13 +62,11 @@ ActiveRecord::Schema.define(version: 2018_11_06_033250) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image"
     t.bigint "age_group_id"
     t.bigint "category_id"
-    t.bigint "product_review_id"
+    t.string "image"
     t.index ["age_group_id"], name: "index_products_on_age_group_id"
     t.index ["category_id"], name: "index_products_on_category_id"
-    t.index ["product_review_id"], name: "index_products_on_product_review_id"
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 
@@ -110,7 +108,6 @@ ActiveRecord::Schema.define(version: 2018_11_06_033250) do
   add_foreign_key "product_reviews", "users"
   add_foreign_key "products", "age_groups"
   add_foreign_key "products", "categories"
-  add_foreign_key "products", "product_reviews"
   add_foreign_key "products", "users"
   add_foreign_key "transactions", "products"
   add_foreign_key "transactions", "users"
