@@ -16,8 +16,7 @@ class ProductsController < ApplicationController
 
   def inactive_button
     @product = Product.find(params[:id])
-    @product.active = false
-    # @product.active = !@product.active
+    @product.active = !@product.active
     @product.save
 
     redirect_to profile_path
