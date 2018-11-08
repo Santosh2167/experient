@@ -24,7 +24,7 @@ class ProductReviewsController < ApplicationController
 
   # GET /product_reviews/1/edit
   def edit
-    if current_user != @product_review.user_id
+    if current_user.id != @product_review.user_id
       redirect_to profile_path
     end
   end

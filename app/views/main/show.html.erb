@@ -62,7 +62,7 @@
     <div>Description: <%= product.description %></div>
     <div>
     <span><%=link_to "View Detail",business_product_path(business_id: product.user.id, id: product.id)%></span>
-    <span><%=link_to "Edit",edit_business_product_path(:id => product.id, :business_id => product.user.id)%></span>
+    | <span><%=link_to "Edit",edit_business_product_path(:id => product.id, :business_id => product.user.id)%></span>
       <% if product.active? == true %>
         | <span><%= link_to 'Make Product Inactive', inactive_business_product_path(business_id: product.user.id, id: product.id), method: :put %></span>
       <% else %>
@@ -131,10 +131,10 @@
       <div>
         <% if t.product_review %>
           <div>
-          <%= t.product_review.rating%>
+          Rating: <%= t.product_review.rating%>
           </div>
           <div>
-          <%= t.product_review.comment%>
+          Comment: <%= t.product_review.comment%>
           </div>
           <%= link_to "Edit review", edit_product_review_path(t.product_review.id)%>
         <% else %>
