@@ -66,14 +66,14 @@ Hi <%= current_user.first_name.capitalize%>
 <%= business.phone_number %>
 </p>
 
-<%= link_to 'Show', business %>
+<%# <%= link_to 'Show', business %> 
 <%= link_to 'Edit', edit_business_path(business) %>
 <%# <%= link_to 'Destroy', business, method: :delete, data: { confirm: 'Are you sure?' } %>
 
 <br>
 
 <%= link_to "New Product", new_business_product_path(business_id: @business.id)%> 
-<%= link_to "History", history_path(business_id: @business.id)%>
+<%# <%= link_to "History", history_path(business_id: @business.id)%> 
 <% end %>
 
 <h1>My Active Products</h1>
@@ -88,11 +88,6 @@ Hi <%= current_user.first_name.capitalize%>
 <div>
 <span><%=link_to "View Detail",business_product_path(business_id: product.user.id, id: product.id)%></span>
 <span><%=link_to "Buy Me",business_product_path(business_id: product.user.id, id: product.id)%></span>
-<% if product.active? == true %>
-<span><%= link_to 'Make Product Inactive', inactive_business_product_path(business_id: product.user.id, id: product.id), method: :put %></span>
-<% else %>
-<span><%= link_to 'Make Product Active', inactive_business_product_path(business_id: product.user.id, id: product.id), method: :put %></span>
-<% end %>
 </div>
 <br>
 <% end %>
