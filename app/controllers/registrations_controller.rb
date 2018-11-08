@@ -18,7 +18,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def after_update_path_for(resource)
-    if current_user.is_supplier && current_user.business.nil?
+    if resource.is_supplier == true && resource.business.nil?
       new_business_path
     else
       profile_path

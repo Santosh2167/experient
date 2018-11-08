@@ -1,5 +1,6 @@
 class ProductReviewsController < ApplicationController
   before_action :set_product_review, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /product_reviews
   # GET /product_reviews.json
@@ -10,6 +11,9 @@ class ProductReviewsController < ApplicationController
   # GET /product_reviews/1
   # GET /product_reviews/1.json
   def show
+    if current_user != @product_review.user_id
+      redirect_to profile_path
+    end
   end
 
   # GET /product_reviews/new
@@ -20,6 +24,9 @@ class ProductReviewsController < ApplicationController
 
   # GET /product_reviews/1/edit
   def edit
+    if current_user != @product_review.user_id
+      redirect_to profile_path
+    end
   end
 
   # POST /product_reviews
