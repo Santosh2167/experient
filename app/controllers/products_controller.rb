@@ -118,6 +118,9 @@ class ProductsController < ApplicationController
         format.html { redirect_to profile_path, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
+        @business = Business.find(params[:business_id])
+        @category = Category.pluck("category","id")
+        @agegroup = AgeGroup.pluck("range", "id")
         format.html { render :new }
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end

@@ -41,8 +41,12 @@
   <strong>Reviews:</strong>
   <% if @product.transactions %>
     <% @product.transactions.each do |t| %>
-    <%= t.product_review.rating%>
-    <%= t.product_review.comment%>
+    <div>
+    Rating: <%= t.product_review.rating%>
+    </div>
+    <div>
+    Comment: <%= t.product_review.comment%>
+    </div>
     <% end %>
   <% end %>
 </p>
