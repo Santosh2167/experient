@@ -86,6 +86,30 @@
      display: inline-block;
      max-width: 300px;
  }
+
+ .picture_section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .profile_pic {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .picture {
+      display: flex;
+      flex-direction: column;
+  }
+
+  .bussiness_info_title {
+      text-decoration: underline;
+  }
+
+  .business_info {
+      margin: 9.5px 0;
+  }
 //  .featured-image{
 //      max-width: 300px;
 //  }
