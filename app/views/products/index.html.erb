@@ -15,7 +15,7 @@
   <div>Description: <%= product.description %></div>
   <div>
     <span><%=link_to "View Detail",business_product_path(business_id: product.user.id, id: product.id)%></span>
-    <span><%=link_to "Buy Me",business_product_path(business_id: product.user.id, id: product.id)%></span>
+    | <span><%=link_to "Buy Me",business_product_path(business_id: product.user.id, id: product.id)%></span>
   </div>
   <br>
 <% end %>

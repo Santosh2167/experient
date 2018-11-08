@@ -11,20 +11,20 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :rating %>
-    <%= form.number_field :rating %>
+    <%= form.number_field :rating, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :comment %>
-    <%= form.text_area :comment %>
+    <%= form.text_area :comment, class: "form-control", id:"exampleFormControlTextarea1", rows:"3" %>
   </div>
 
     <%= form.hidden_field :transaction_id, value: @transaction_id%>
 
 
-  <div class="actions">
-    <%= form.submit "Submit review"%>
+  <div class="actions form-group">
+    <%= form.submit "Submit review", class: "btn btn-primary"%>
   </div>
 <% end %>
