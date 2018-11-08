@@ -11,37 +11,37 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :trading_name %>
-    <%= form.text_field :trading_name %>
+    <%= form.text_field :trading_name, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :registered_business_name %>
-    <%= form.text_field :registered_business_name %>
+    <%= form.text_field :registered_business_name, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :business_address %>
-    <%= form.text_field :business_address %>
+    <%= form.text_field :business_address, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :post_code %>
-    <%= form.number_field :post_code %>
+    <%= form.number_field :post_code, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :abn %>
-    <%= form.number_field :abn %>
+    <%= form.number_field :abn, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :phone_number %>
-    <%= form.number_field :phone_number %>
+    <%= form.number_field :phone_number, class: "form-control" %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions form-group">
+    <%= form.submit class: "btn btn-primary" %>
   </div>
 <% end %>
