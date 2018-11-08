@@ -106,6 +106,7 @@ class ProductsController < ApplicationController
   def edit
     @business = User.find(params[:business_id]).business
     @category = Category.pluck("category","id")
+    @agegroup = AgeGroup.pluck("range", "id")
   end
 
   # POST /products
@@ -132,7 +133,7 @@ class ProductsController < ApplicationController
   def update
     respond_to do |format|
       if @product.update(product_params)
-        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
+        format.html { redirect_to profile_path, notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @product }
       else
         format.html { render :edit }
