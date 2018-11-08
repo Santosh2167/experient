@@ -4,7 +4,7 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  validates :first_name, :last_name, :email, :password, :post_code, :date_of_birth, presence: true
+  validates :first_name, :last_name, :email, :password, :post_code, :date_of_birth, presence: true, on: :create
   validates :post_code, numericality: { only_integer: true }, length: { is: 4 }
   # has_many :interests, as: :categorable
 
