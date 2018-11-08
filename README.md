@@ -544,10 +544,12 @@ User Stories
 ![require](docs/wireframe11.png)
 
 >>17. Describe the way tasks are allocated and tracked in your project.
+
 The process of allocating the tasks for each member of the team started out in Trello. We wrote up the user stories, then disected each story into the feature(s) that would have to be created for each. After writing out all the features that had to be completed, we then discussed amongst ourselves what we would like to do. Initially we were going to tackle the tasks that we didn’t have the best understanding of in order to build our knowledge, however we decided it would be best to work on our strengths at first, but also create code that we can then explain fully to each member of the team.
 
 
 >>18. Discuss how Agile methodology is being implemented in your project.
+
 Agile methodology helped us to create the application as it currently is. We have kept customer at the center during the app development. We started with User Stroies by putting ourselves in a user’s shoe and listed all the features and functions that a user wants. 
 We then listed out Supplier’s Story and listed all the features and functions that a supplier wants. 
 
@@ -556,12 +558,15 @@ When scripting we always thought and discussed among the team members how user w
 By segregating the workflow amongst the team, we were able to divide each required feature into smaller tasks and we worked on such tasks next to one another. Although we believed we had all relationships covered in each ERD, we realised throughout the course of the development process that categories and relationships had to be modified, created or deleted. 
 
 >>19. Provide an overview and description of your Source control process.
+
 The source control process was maintained through the use of git branches. Each necessary feature was worked on in its individual branch. These branches were used to help keep the code for a particular feature away from the master code until the feature had been completed. When one of the team had code that was ready to merge into the master branch, we would put our current code on pause and work through any merge conficts (if any did arise) to ensure we all had an understanding of the changes that were being made to the master code.
 
 >>20. Provide an overview and description of your Testing process.
+
 The testing process was performed over 3 stages. The first was when a feature was tested in its separate branch. The person who developed the feature would make sure it worked in the branch before merging it into the master branch. Once satisfied with the individual branch and merged into master, it was tested again to make sure that there were no issues cause from that merge. The third test was created in the form of an excel spreadsheet, where we would state the task the feature was meant to perform and we would confirm/deny whether that task was able to be carried out correctly.
 
 >>21. Discuss and analyse requirements related to information system security.
+
 Following were the security concenrs when building the app
 Keeping personal information safe
 We are collecting personal information during the sign up. We are also keeping track of transactions of individuals (i.e. purchasing behaviour). Hence rather than storing data in a text file or access, we have chose Postgresql, a good database with robust security.
@@ -586,6 +591,7 @@ Cross-Site Request Forgery (CSRF) is an attack that allows a malicious user to s
 We have not used hidden field to get the price of the product we are selling which can be manipulated by the hacker 
 
 >>23. Research what your legal obligations are in relation to handling user data.
+
 Australia has a scrict law when it comes to financial and personal data handling. Privecy Act 1988 requires all data to be handled securely. Considering this requirment, we have chosed a good robust databse named Postgres to install all the data. 
 
 We have chosen Rails that uses Bcrypt and had CSRF function to store password and to handle cross site data request
