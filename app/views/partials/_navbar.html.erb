@@ -24,6 +24,7 @@
       </li>
         </div>
       <% end %>
+      
       <% if user_signed_in? %>
         <% if current_user.avatar.present?%>
           <li class="nav-item">
@@ -39,6 +40,7 @@
           <a class="nav-link" href="/users/sign_in"><img src="/profile.png" alt="profile image" height="30" width="30"></a>
         </li>
       <% end %>
+    
     </ul>
     <div class="form-inline my-2 my-lg-0">
       <%= form_tag search_result_path, :method => 'get' do %>
