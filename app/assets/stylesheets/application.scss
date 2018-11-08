@@ -112,6 +112,20 @@
       margin: 9.5px 0;
   }
 
+  .all_products {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .each_product {
+      margin: 10px;
+  }
+
+  .prod_title {
+      margin-bottom: 20px;
+  }
 //  .featured-image{
 //      max-width: 300px;
 //  }
@@ -123,4 +137,4 @@
 //  }
 //  .featured-description{
 //      max-width: 300px;
-//  }
+//  } 
