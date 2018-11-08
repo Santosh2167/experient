@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_06_033250) do
+ActiveRecord::Schema.define(version: 2018_11_08_000950) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,9 +62,9 @@ ActiveRecord::Schema.define(version: 2018_11_06_033250) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
     t.bigint "age_group_id"
     t.bigint "category_id"
-    t.string "image"
     t.index ["age_group_id"], name: "index_products_on_age_group_id"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["user_id"], name: "index_products_on_user_id"
@@ -95,8 +95,6 @@ ActiveRecord::Schema.define(version: 2018_11_06_033250) do
     t.boolean "is_supplier"
     t.string "avatar"
     t.string "provider"
-    t.string "uid"
-    t.string "name"
     t.text "image"
     t.string "customer_id"
     t.index ["email"], name: "index_users_on_email", unique: true
