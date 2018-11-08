@@ -1,5 +1,5 @@
 
-<h1 class="product-detail">Product Detail Products</h1>
+<h1 class="product-detail">Product Detail</h1>
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -7,8 +7,12 @@
   <%= @product.name %>
 </p>
 
+<div>
+  <%= image_tag @product.image_url%>
+</div>
+
 <p>
-  <strong>Cost:</strong>
+  <strong>Cost: $</strong>
   <%= @product.cost %>
 </p>
 
@@ -24,7 +28,7 @@
 
 <p>
   <strong>Age Group:</strong>
-  <%= @product.age_group_id %>
+  <%= @product.age_group.range %>
 </p>
 
 <p>
@@ -34,7 +38,7 @@
 
 <p>
   <strong>Category:</strong>
-  <%= @product.category_id %>
+  <%= @product.category.category %>
 </p>
 
 <p>
