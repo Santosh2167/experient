@@ -44,10 +44,10 @@ ActiveRecord::Schema.define(version: 2018_11_08_000950) do
     t.integer "rating"
     t.text "comment"
     t.bigint "user_id"
-    t.bigint "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_product_reviews_on_product_id"
+    t.bigint "transaction_id"
+    t.index ["transaction_id"], name: "index_product_reviews_on_transaction_id"
     t.index ["user_id"], name: "index_product_reviews_on_user_id"
   end
 
@@ -102,7 +102,7 @@ ActiveRecord::Schema.define(version: 2018_11_08_000950) do
   end
 
   add_foreign_key "businesses", "users"
-  add_foreign_key "product_reviews", "products"
+  add_foreign_key "product_reviews", "transactions"
   add_foreign_key "product_reviews", "users"
   add_foreign_key "products", "age_groups"
   add_foreign_key "products", "categories"

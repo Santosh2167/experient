@@ -65,11 +65,6 @@ class ProductsController < ApplicationController
         user_id: current_user.id
        )
 
-       ProductReview.create(
-         product_id: @product_id,
-         user_id: current_user.id
-       )
-
       #  @transaction.save
     
     # @transaction.save
@@ -165,6 +160,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :cost, :location, :description, :active, :category, :keywords, :user_id, :image)
+      params.require(:product).permit(:name, :cost, :location, :description, :active, :category_id, :keywords, :user_id, :image, :age_group_id)
     end
 end

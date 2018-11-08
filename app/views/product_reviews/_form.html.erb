@@ -21,6 +21,9 @@
     <%= form.text_area :comment %>
   </div>
 
+    <%= form.hidden_field :transaction_id, value: @transaction_id%>
+
+
   <div class="actions">
     <%= form.submit "Submit review"%>
   </div>

@@ -3,7 +3,6 @@ class Product < ApplicationRecord
 
   belongs_to :age_group
   belongs_to :category
-  has_many :product_reviews
   has_many :transactions
   mount_uploader :image, ImageUploader
 
