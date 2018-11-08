@@ -23,6 +23,9 @@ class MainController < ApplicationController
         @my_products = Product.where(user_id: current_user)
         @productreviews = ProductReview.where(user_id: current_user)
         @my_user = User.where(id: current_user)
+        #@transactions = Transaction.where(user_id: current_user)
+        @transactions = current_user.transactions
+
     end
         
     def update

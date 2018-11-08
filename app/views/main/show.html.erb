@@ -1,3 +1,4 @@
+
 <% if current_user.is_supplier == true %>
 <div class="jumbotron picture_section">
   <div>
@@ -51,6 +52,7 @@
 </div>
 
 <% else %>
+
 
 <div class="jumbotron picture_section">
   <div>
@@ -146,3 +148,27 @@
       <% end %>
   <% end %>
 </div>
+
+<h2> Purchases </h2>
+<div> 
+<% @transactions.each do |t| %>
+      <div>
+      Name: <%=t.product.name%>
+      </div>
+      <div>
+      Cost: $<%=t.product.cost%>
+      </div>
+      <div>
+        <% if t.product_review %>
+          <div>
+          <%= t.product_review.rating%>
+          </div>
+          <div>
+          <%= t.product_review.comment%>
+          </div>
+          <%= link_to "Edit review", edit_product_review_path(t.product_review.id)%>
+        <% else %>
+          <%= link_to "Create review", new_product_review_path(transaction_id: t.id)%>
+        <% end %>
+      </div>
+<% end%>
