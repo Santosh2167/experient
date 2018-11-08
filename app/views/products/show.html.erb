@@ -27,7 +27,6 @@
   <%= @product.age_group_id %>
 </p>
 
-
 <p>
   <strong>Keywords:</strong>
   <%= @product.keywords %>
@@ -38,6 +37,15 @@
   <%= @product.category_id %>
 </p>
 
+<p>
+  <strong>Reviews:</strong>
+  <% if @product.transactions %>
+    <% @product.transactions.each do |t| %>
+    <%= t.product_review.rating%>
+    <%= t.product_review.comment%>
+    <% end %>
+  <% end %>
+</p>
 
 
 <%= form_with url: payment_path do %>

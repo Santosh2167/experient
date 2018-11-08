@@ -25,10 +25,7 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
-    # render current_user.email
-    #  @user = User.find(current_user[:id])
-    # render json: first_name
-    # render json: current_user[:first_name]
+
   end
 
   def process_payment
