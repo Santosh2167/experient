@@ -53,7 +53,7 @@ The design process was based off similar applications. We drew inspiration from 
 * As a supplier, I want to be able to delete my account.
 
 ### Workflow Diagram
-
+![require](docs/userworkflow.png)
 
 ### Wireframes
 ![require](docs/wireframe1.png)
