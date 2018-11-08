@@ -13,7 +13,15 @@
         <%# <h4><a class="business-link" href="/profile"><%= current_user.business.trading_name%></a></h4> 
     <%# <% end %> 
 <div class="input-group input-group-sm mb-3">
-<%=render "partials/product_search"%>
+<%= form_tag search_result_path, :class => "searchbar", :method => 'get' do%>
+<div class="input-group input-group-sm mb-3">
+    <%= text_field_tag :search, params[:search], :class => "form-control"%>
+    <%= submit_tag "Search", :class => "btn btn-primary " %>
+</div>
+<%end%>
+<br>
+
+    <%= link_to "Advanced Search", advanced_search_path, class: "advancedsearch search_link" %> 
 </div>
 </div>
 
