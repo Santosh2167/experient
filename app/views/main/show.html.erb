@@ -1,6 +1,6 @@
 
 <% if current_user.is_supplier == true %>
-<div class="jumbotron picture_section">
+  <div class="jumbotron picture_section">
   <div>
     <h4 class="bussiness_info_title">Business Information</h4>
 
@@ -51,79 +51,77 @@
   <% end %>
 </div>
 
-<% else %>
-
-
-<div class="jumbotron picture_section">
-  <div>
-    <h4 class="bussiness_info_title">User Information</h4>
-
-    <% @my_user.each do |user| %>
-    <p class="business_info">
-    <strong>First name:</strong>
-    <%= user.first_name %>
-    </p>
-
-    <p class="business_info">
-    <strong>Last name:</strong>
-    <%= user.last_name %>
-    </p>
-
-    <p class="business_info">
-    <strong>Email:</strong>
-    <%= user.email %>
-    </p>
-
-    <p class="business_info">
-    <strong>Date of brith:</strong>
-    <%= user.date_of_birth %>
-    </p>
-
-    <p class="business_info">
-    <strong>Post code:</strong>
-    <%= user.post_code %>
-    </p>
-
-    <%= link_to "Edit user", edit_user_registration_path(current_user) %>
-  </div>
-  <div class="profile_pic">
-    <div class="picture">
-        <%= image_tag current_user.avatar_url%>
-        <div>
-          <%= link_to('Sign out', destroy_user_session_path, method: :delete)%>
-        </div>
-    </div>
-  </div>
-  <% end %>
-</div>
-
-<% end %>
-
 <h1>My Active Products</h1>
-<% @my_products.each do |product| if product.active? %>
-<h3>Title: <%= link_to product.name, business_product_path(business_id: product.user.id, id: product.id) %></h3>
-<div>Price: $<%= product.cost %></div>
-<div>Location: <%= product.location %></div>
-<div>isActive?: <%= product.active %></div>
-<div>Category: <%= product.category %></div>
-<div>keywords: <%= product.keywords %></div>
-<div>Description: <%= product.description %></div>
-<div>
-<span><%=link_to "View Detail",business_product_path(business_id: product.user.id, id: product.id)%></span>
-<span><%=link_to "Buy Me",business_product_path(business_id: product.user.id, id: product.id)%></span>
-<% if product.active? == true %>
-<span><%= link_to 'Make Product Inactive', inactive_business_product_path(business_id: product.user.id, id: product.id), method: :put %></span>
-<% else %>
-<span><%= link_to 'Make Product Active', inactive_business_product_path(business_id: product.user.id, id: product.id), method: :put %></span>
-<% end %>
-</div>
-<br>
-<% end %>
-<% end %> 
+  <% @my_products.each do |product| if product.active? %>
+    <h3>Title: <%= link_to product.name, business_product_path(business_id: product.user.id, id: product.id) %></h3>
+    <div>Price: $<%= product.cost %></div>
+    <div>Location: <%= product.location %></div>
+    <div>isActive?: <%= product.active %></div>
+    <div>Category: <%= product.category %></div>
+    <div>keywords: <%= product.keywords %></div>
+    <div>Description: <%= product.description %></div>
+    <div>
+    <span><%=link_to "View Detail",business_product_path(business_id: product.user.id, id: product.id)%></span>
+    <span><%=link_to "Buy Me",business_product_path(business_id: product.user.id, id: product.id)%></span>
+      <% if product.active? == true %>
+        <span><%= link_to 'Make Product Inactive', inactive_business_product_path(business_id: product.user.id, id: product.id), method: :put %></span>
+      <% else %>
+        <span><%= link_to 'Make Product Active', inactive_business_product_path(business_id: product.user.id, id: product.id), method: :put %></span>
+      <% end %>
+  </div>
+  <br>
+  <% end %> 
+  <% end %>
 
-<h2> Purchases </h2>
-<div> 
-<% @transactions.each do |t| %>
+<% else %>
+
+
+  <div class="jumbotron picture_section">
+    <div>
+      <h4 class="bussiness_info_title">User Information</h4>
+
+      <% @my_user.each do |user| %>
+      <p class="business_info">
+      <strong>First name:</strong>
+      <%= user.first_name %>
+      </p>
+
+      <p class="business_info">
+      <strong>Last name:</strong>
+      <%= user.last_name %>
+      </p>
+
+      <p class="business_info">
+      <strong>Email:</strong>
+      <%= user.email %>
+      </p>
+
+      <p class="business_info">
+      <strong>Date of brith:</strong>
+      <%= user.date_of_birth %>
+      </p>
+
+      <p class="business_info">
+      <strong>Post code:</strong>
+      <%= user.post_code %>
+      </p>
+
+      <%= link_to "Edit user", edit_user_registration_path(current_user) %>
+    </div>
+    <div class="profile_pic">
+      <div class="picture">
+          <%= image_tag current_user.avatar_url%>
+          <div>
+            <%= link_to('Sign out', destroy_user_session_path, method: :delete)%>
+          </div>
+      </div>
+    </div>
+    <% end %>
+    </div>
+
+  <h2> Purchases </h2>
+  <div> 
+  <% @transactions.each do |t| %>
       <div>
       Name: <%=t.product.name%>
       </div>
@@ -143,4 +141,5 @@
           <%= link_to "Create review", new_product_review_path(transaction_id: t.id)%>
         <% end %>
       </div>
-<% end%>
+  <% end%>
+<% end %>
